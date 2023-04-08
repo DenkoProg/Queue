@@ -39,7 +39,7 @@ def about(request):
         'app/about.html',
         {
             'title':'About',
-            'message':'Your application description page.',
+            'message':'The best queue app in the world',
             'year':datetime.now().year,
         }
     )
