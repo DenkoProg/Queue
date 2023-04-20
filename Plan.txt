@@ -1,1 +1,32 @@
-Where is the plan?
+1) Complete the design:
+- Finish phone view,
+- Resize everything to fullscreen,
+- Change fonts,
+- Name all the frames
+
+2) Finish the database and API:
+- Figure out how to extend default User model,
+- Think about admin rules for queue creator,
+- Learn about authorisation and implement it,
+- Complete the API with all the endpoints
+
+3) Make frontend:
+- Finish React course to start working,
+- Make it scalable for smartphones,
+- Connect through API
+
+4) Build mobile application:
+- Finish mobile development course to start,
+- Connect through API,
+- Create a link to download an app from website
+
+5) Test everything and deploy
+
+6) Start adding all the other features to make project really decent:
+- Randomizer,
+- Settings (Language changing, Theme...),
+- Profile picture,
+- Notifications,
+- Saved Queues
+
+
