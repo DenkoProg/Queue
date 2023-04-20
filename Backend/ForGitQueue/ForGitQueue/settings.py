@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quenic'
+    'quenic',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,7 @@ DATABASES = {
         'PASSWORD': 'postgres',
         'HOST': 'quenic.cp3zsu6wzeos.eu-north-1.rds.amazonaws.com',
         'PORT': '5432',
+
     }
 }
 
