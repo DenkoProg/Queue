@@ -5,11 +5,9 @@ from rest_framework import status,generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import QueueSerializer
-from .models import Queue
+from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer
+from .models import Queue, User, QueueMembership
 
-from .serializers import UserSerializer
-from django.contrib.auth.models import User
 
 # Create your views here.
 class QueueViewSet(viewsets.ModelViewSet):
@@ -19,6 +17,10 @@ class QueueViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class QueueMembershipViewSet(viewsets.ModelViewSet):
+    queryset = QueueMembership.objects.all()
+    serializer_class = QueueMembershipSerializer
 
 #delete a queue
 @api_view(['DELETE'])
