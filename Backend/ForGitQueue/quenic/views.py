@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
+from rest_framework import status,generics
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .serializers import QueueSerializer
 from .models import Queue
 
@@ -15,3 +19,23 @@ class QueueViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+#delete a queue
+@api_view(['DELETE'])
+def delete_queue(request, queue_id):
+    try:
+        queue = Queue.objects.get(id=queue_id)
+    except Queue.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    queue.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+#create a queue
+@api_view(['POST'])
+def create_queue(request):
+    serializer = QueueSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(creator=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
