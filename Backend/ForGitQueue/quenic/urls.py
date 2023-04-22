@@ -1,18 +1,15 @@
-from django.urls import include, path
+from django.urls import path, include
 from rest_framework import routers
-from . import views
+from .views import QueueViewSet, UserViewSet, QueueMembershipViewSet, get_queue, delete_queue, UpdateQueue
 
 router = routers.DefaultRouter()
-router.register(r'queues', views.QueueViewSet)
-router.register(r'users', views.UserViewSet)
-router.register(r'queue_memberships', views.QueueMembershipViewSet)
-
+router.register('queues', QueueViewSet)
+router.register('users', UserViewSet)
+router.register('memberships', QueueMembershipViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls',
-                              namespace = 'rest_framework')),
-    path('queues/<int:queue_id>/delete/', views.delete_queue, name='delete_queue'),
-    path('queues/create/', views.create_queue, name='create_queue'),
-    path('queues/<int:queue_id>/', views.get_queue),
+    path('queue/<int:queue_id>/', get_queue, name='get_queue'),
+    path('queue/<int:queue_id>/delete/', delete_queue, name='delete_queue'),
+    path('queue/<int:pk>/update/', UpdateQueue.as_view(), name='update_queue'),
 ]
