@@ -29,7 +29,6 @@ def get_queue(request, queue_id):
     serializer = QueueSerializer(queue)
     return Response(serializer.data)
 
-
 @api_view(['DELETE'])
 def delete_queue(request, queue_id):
     try:
@@ -39,3 +38,39 @@ def delete_queue(request, queue_id):
 
     queue.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+def add_user(request, queue_id):
+    try:
+        queue = Queue.objects.get(id=queue_id)
+    except Queue.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    user_id = request.data.get('user_id', None)
+    if user_id is None:
+        return Response({"detail": "User ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return Response(status.HTTP_404_NOT_FOUND)
+
+    if queue.users.filter(id=user_id).exists():
+        return Response({"detail": "User is already in the queue."}, status=status.HTTP_400_BAD_REQUEST)
+
+    queue.users.add(user)
+    queue_membership = QueueMembership(user=user, queue=queue, position=queue.users.count())
+    queue_membership.save()
+    serializer = QueueMembershipSerializer(queue_membership)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['PUT'])
+def update_queue(request, queue_id):
+    queue = get_object_or_404(Queue, id=queue_id)
+
+    # Update the queue with the data from the request
+    serializer = QueueSerializer(queue, data=request.data, partial=True, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

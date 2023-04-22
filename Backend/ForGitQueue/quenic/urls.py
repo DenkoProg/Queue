@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import QueueViewSet, UserViewSet, QueueMembershipViewSet, get_queue, delete_queue
+from .views import QueueViewSet, UserViewSet, QueueMembershipViewSet, get_queue, delete_queue, update_queue, add_user
 
 router = routers.DefaultRouter()
 router.register('queues', QueueViewSet)
@@ -11,4 +11,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('queues/<int:queue_id>/', get_queue, name='get_queue'),
     path('queues/<int:queue_id>/delete/', delete_queue, name='delete_queue'),
+    path('queues/<int:queue_id>/add_user/', add_user, name='add_user_to_queue'),
+    path('queues/<int:queue_id>/update/', update_queue, name='update_queue'),
 ]
