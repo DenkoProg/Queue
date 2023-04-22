@@ -5,7 +5,7 @@ from .models import Queue, QueueMembership
 class QueueSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Queue
-        fields = ('creator', 'name', 'description', 'users')
+        fields = ('id', 'creator', 'name', 'description', 'users')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

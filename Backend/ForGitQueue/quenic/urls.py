@@ -9,6 +9,6 @@ router.register('memberships', QueueMembershipViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('queue/<int:queue_id>/', get_queue, name='get_queue'),
-    path('queue/<int:queue_id>/delete/', delete_queue, name='delete_queue'),
+    path('queues/<int:queue_id>/', get_queue, name='get_queue'),
+    path('queues/<int:queue_id>/delete/', delete_queue, name='delete_queue'),
 ]
