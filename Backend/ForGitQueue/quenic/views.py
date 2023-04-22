@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
 from rest_framework import status,generics
@@ -21,6 +21,12 @@ class UserViewSet(viewsets.ModelViewSet):
 class QueueMembershipViewSet(viewsets.ModelViewSet):
     queryset = QueueMembership.objects.all()
     serializer_class = QueueMembershipSerializer
+
+@api_view(['GET'])
+def get_queue(request, queue_id):
+    queue = get_object_or_404(Queue, id=queue_id)
+    serializer = QueueSerializer(queue)
+    return Response(serializer.data)
 
 #delete a queue
 @api_view(['DELETE'])

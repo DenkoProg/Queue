@@ -14,4 +14,5 @@ urlpatterns = [
                               namespace = 'rest_framework')),
     path('queues/<int:queue_id>/delete/', views.delete_queue, name='delete_queue'),
     path('queues/create/', views.create_queue, name='create_queue'),
+    path('queues/<int:queue_id>/', views.get_queue),
 ]
