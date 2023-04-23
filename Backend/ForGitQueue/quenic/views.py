@@ -74,3 +74,34 @@ def update_queue(request, queue_id):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+def update_user(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+
+    # Update the user with the data from the request
+    serializer = UserSerializer(user, data=request.data, partial=True, context={'request': request})
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def remove_user(request, queue_id, user_id):
+    try:
+        queue = Queue.objects.get(id=queue_id)
+    except Queue.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if not queue.users.filter(id=user_id).exists():
+        return Response({"detail": "User is not in the queue."}, status=status.HTTP_400_BAD_REQUEST)
+
+    queue.users.remove(user)
+    queue_membership = QueueMembership.objects.get(user=user, queue=queue)
+    queue_membership.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
