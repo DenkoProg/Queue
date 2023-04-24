@@ -29,16 +29,6 @@ def get_queue(request, queue_id):
     serializer = QueueSerializer(queue)
     return Response(serializer.data)
 
-@api_view(['DELETE'])
-def delete_queue(request, queue_id):
-    try:
-        queue = Queue.objects.get(id=queue_id)
-    except Queue.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    queue.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
-
 @api_view(['POST'])
 def add_user(request, queue_id):
     try:
@@ -85,6 +75,16 @@ def update_user(request, user_id):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def delete_queue(request, queue_id):
+    try:
+        queue = Queue.objects.get(id=queue_id)
+    except Queue.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    queue.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['DELETE'])
 def remove_user(request, queue_id, user_id):

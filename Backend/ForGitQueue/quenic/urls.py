@@ -14,5 +14,5 @@ urlpatterns = [
     path('queues/<int:queue_id>/add_user/', add_user, name='add_user_to_queue'),
     path('queues/<int:queue_id>/update/', update_queue, name='update_queue'),
     path('users/<int:user_id>/update/', update_user, name='update_queue'),
-    path('queues/<int:queue_id>/remove_user/<int:user_id>/', remove_user, name='remove_user')
+    path('queues/<int:queue_id>/remove_user/<int:user_id>/', remove_user, name='remove_user'),
 ]
