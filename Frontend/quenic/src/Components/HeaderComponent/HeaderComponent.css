@@ -1,0 +1,62 @@
+@import '../../cfonts.css';
+.header {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    margin-bottom: 10px;
+    background: #222831;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.left-side{
+    height: 100%;
+    width: 215px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hamburger-menu{
+    height: 34px;
+    width: 34px;
+    color: #00ADB5;
+}
+
+.left-side :hover{
+    cursor: pointer;
+}
+
+.logo{
+    width: 171px;
+    height: 24px;
+    font-family: 'Arvo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 150%;
+    display: flex;
+    align-items: center;
+    color: #00ADB5;
+}
+.right-side{
+    height: 25px;
+    width: 25px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+.user-icon{
+    height: 100%;
+    width: 100%;
+    color: #00ADB5;
+}
+
+.right-side :hover{
+    cursor: pointer;
+}
