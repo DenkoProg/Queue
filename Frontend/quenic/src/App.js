@@ -1,10 +1,15 @@
 import './App.css';
+
+import HeaderComponent from "./Components/HeaderComponent/HeaderComopnent";
+import HomeComponent from "./Components/HomeComponents/HomeComponent";
 import SidePanel from "./components/SidePanel/SidePanel";
 
 function App() {
   return (
     <div className="App">
       <SidePanel />
+      <HeaderComponent/>
+      <HomeComponent/>
     </div>
   );
 }
