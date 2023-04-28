@@ -7,9 +7,9 @@ import SidePanel from "./Components/SidePanel/SidePanel";
 function App() {
   return (
     <div className="App">
-      {/*<SidePanel />*/}
-      <HeaderComponent/>
-      <HomeComponent/>
+      <SidePanel />
+      <HeaderComponent />
+      {/*<HomeComponent />*/}
     </div>
   );
 }
