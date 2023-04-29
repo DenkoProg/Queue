@@ -10,12 +10,14 @@ function JoinQueue() {
     <div className={classes.mainContainer}>
         <img src={Exit} className={classes.exitImage} alt={"Exit"}/>
         <div className={classes.textBlock}>
-            <div className={classes.queueDescription}>Do you want to join an existing queue</div>
-            <div className={classes.paragraph}>
-            </div>
+            <div className={classes.header}>Do you want to join an existing queue?</div>
+            <div className={classes.paragraph}>Write queue code</div>
+            <form>
+                    <input type="text" className={classes.input} placeholder="Your code"/>
+            </form>
         </div>
-        <Button className={classes.addButton} variant="outline-secondary"><img src={Add} className={classes.addImage} alt={"Add"}></img>Create new</Button>
-        <Button className={classes.findButton} variant="dark"><img src={Find} className={classes.findImage} alt={"Find"}></img>Find queue</Button>
+        <Button  variant="dark" className={classes.addButton}><img src={Add} className={classes.addImage} alt={"Add"}></img>Create new</Button>
+        <Button className={classes.findButton} variant="outline-secondary"><img src={Find} className={classes.findImage} alt={"Find"}></img>Find queue</Button>
     </div>)
 }
 
