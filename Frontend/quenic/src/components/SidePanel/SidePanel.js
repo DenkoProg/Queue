@@ -17,7 +17,7 @@ function SidePanel() {
             </div>
             <div className={classes.listElement}>
                 <img src={profileIcon} className={classes.image} alt="Home Icon"/>
-                <div className={classes.profile}>Profile</div>
+                <div className={classes.text}>Profile</div>
             </div>
             <div className={classes.listElement}>
                 <img src={favouriteQueuesIcon} className={classes.bookmarkImage} alt="Home Icon"/>
@@ -26,20 +26,20 @@ function SidePanel() {
             </div>
             <div className={classes.listElement}>
                 <img src={addQueueIcon} className={classes.image} alt="Home Icon"/>
-                <div className={classes.createQueue}>Create Queue</div>
+                <div className={classes.text}>Create Queue</div>
 
             </div>
             <div className={classes.listElement}>
-                <img src={settingsIcon} className={classes.image} alt="Home Icon"/>
-                <div className={classes.settings}>Settings</div>
+                <img src={settingsIcon} className={classes.settingsImage} alt="Home Icon"/>
+                <div className={classes.text}>Settings</div>
             </div>
             <div className={classes.listElement}>
-                <img src={aboutUsIcon} className={classes.image} alt="Home Icon"/>
-                <div className={classes.aboutUs}>About Us</div>
+                <img src={aboutUsIcon} className={classes.infoImage} alt="Home Icon"/>
+                <div className={classes.text}>About Us</div>
             </div>
             <div className={classes.listElementLast}>
-                {<img src={logOutIcon} className={classes.lastImage} alt="Home Icon"/>}
-                <div className={classes.logOut}>Log Out</div>
+                {<img src={logOutIcon} className={classes.image} alt="Home Icon"/>}
+                <div className={classes.text}>Log Out</div>
             </div>
         </div>
     )

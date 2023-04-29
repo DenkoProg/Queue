@@ -8,7 +8,7 @@ import Exit from './images/Exit.png'
 function Description() {
     return (
         <div className={classes.mainContainer}>
-            <img src={Exit} className={classes.exitImage}/>
+            <img src={Exit} className={classes.exitImage} alt={"Exit"}/>
             <div className={classes.textBlock}>
                 <div className={classes.queueDescription}>Queue Description</div>
                 <div className={classes.paragraph}>Commodo eget a et dignissim dignissim morbi vitae, mi. Mi aliquam sit
@@ -17,8 +17,8 @@ function Description() {
                     iaculis enim.
                 </div>
             </div>
-            <Button className={classes.codeButton} variant="outline-secondary"><img src={Code} className={classes.codeImage}></img>Q763GFY2</Button>
-            <Button className={classes.linkButton} variant="dark"><img src={Link} className={classes.linkImage}></img>Copy Link</Button>
+            <Button className={classes.codeButton} variant="outline-secondary"><img src={Code} className={classes.codeImage} alt={"Code"}></img>Q763GFY2</Button>
+            <Button className={classes.linkButton} variant="dark"><img src={Link} className={classes.linkImage} alt={"Link"}></img>Copy Link</Button>
         </div>
     )
 }

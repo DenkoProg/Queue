@@ -1,0 +1,84 @@
+.paragraph {
+    width: initial;
+    height: 40px;
+    text-align: left;
+}
+
+.queueDescription {
+    color: #393e46;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arvo, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    width: min-content;
+    height: min-content;
+    white-space: nowrap;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.mainContainer {
+    background-color: #F7F7F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    align-self: center;
+    width: 750px;
+    height: 264px;
+    border-radius: 10px;
+}
+
+.textBlock {
+    color: #4f4f4f;
+    position: absolute;
+    top: 35px;
+    left: 30px;
+    right: 30px;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: Arvo, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+
+.addButton {
+    position: absolute;
+    right: 230px;
+    bottom: 30px;
+    width: 25%;
+    height: 15%;
+    color: #F7F7F8 !important;
+    background-color: #222831 !important;
+}
+
+
+.addButton:hover .codeImage {
+    filter: brightness(0) invert(1) !important;
+}
+
+.findButton {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 25%;
+    height: 15%;
+    background-color: #00ADB5 !important;
+}
+
+.addImage {
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+}
+
+.findImage {
+    position: absolute;
+    left: 25px;
+}
+
+.exitImage {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
