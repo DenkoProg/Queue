@@ -1,0 +1,46 @@
+@import "../../cfonts.css";
+.about-wrapper{
+    height: 100%;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+.about-container{
+    min-height: 15%;
+    width: 100%;
+    max-height: 45%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
+.about-container-title{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 0 10px 0 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.about-container-text{
+    font-size: 15px;
+    margin: 0;
+    font-family: 'Arvo', sans-serif;
+    color: #00ADB5;
+}
+.about-container-button{
+    color: #222831;
+    font-size: 30px;
+    font-family: 'Arvo' , sans-serif;
+    margin: 0 0 5px 0;
+}
+.about-container-details{
+    width: 90%;
+    padding: 0 10px 0 10px;
+    color: #DDE1E6;
+    font-family: 'Arvo', sans-serif;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.about-correction{
+    border-top: 0;
+}

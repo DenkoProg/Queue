@@ -1,0 +1,8 @@
+.home-card{
+    height: 400px;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 95px;
+    margin-left: 100px ;
+}

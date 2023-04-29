@@ -1,0 +1,94 @@
+.root {
+    position: absolute;
+    width: 256px;
+    height: 100%;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    background-color: #222831;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.listElementFirst {
+    margin-top: 70px;
+    width: 256px;
+    height: 40px;
+    display: flex;
+}
+
+.listElementLast {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 256px;
+    height: 40px;
+    display: flex;
+}
+
+.listElement {
+    width: 256px;
+    height: 40px;
+    display: flex;
+}
+
+.home {
+    color: #fff;
+    font-size: 16px;
+    font-family: Arvo, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    display: flex;
+    padding-top: 5px;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.text {
+    color: #fff;
+    font-size: 16px;
+    font-family: Arvo, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    display: flex;
+    padding-top: 3px;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.image {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    margin-left: 15px;
+}
+
+.favoriteQueues {
+    color: #fff;
+    font-size: 16px;
+    font-family: Arvo, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-left: 14px;
+    padding-top: 3px;
+}
+
+.bookmarkImage {
+    height: 23px;
+    width: 18px;
+    display: flex;
+    margin-top: 3px;
+    margin-left: 18px;
+}
+
+.settingsImage {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    margin-left: 16px;
+}
+
+.infoImage {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    margin-left: 16px;
+}
