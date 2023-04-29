@@ -6,16 +6,18 @@ import SidePanel from "./Components/SidePanel/SidePanel";
 import Description from "./Components/ModalComponents/DescriptionComponent/Description";
 import JoinQueue from "./Components/ModalComponents/JoinQueueComponent/JoinQueue";
 import FooterComponent from "./Components/FooterComponent/FooterComponent";
+import CreateQueue from "./Components/ModalComponents/CreateQueueComponent/CreateQueue";
 
 function App() {
   return (
     <div className="App">
       {/*<SidePanel />*/}
-      <HeaderComponent />
+      {/*<HeaderComponent />*/}
       <FooterComponent />
         {/*<Description />*/}
-        <HomeComponent />
+        {/*<HomeComponent />*/}
         {/*<JoinQueue />*/}
+        <CreateQueue />
 
 
     </div>
