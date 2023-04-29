@@ -1,4 +1,5 @@
 import './HomeQueues.css'
+import QueueComponent from "./QueueComponent";
 function HomeQueues () {
     return(
         <div className = "queues-wrapper">
@@ -7,12 +8,10 @@ function HomeQueues () {
                 <button className = "add-title-button">+</button>
             </div>
             <div className = "queues">
-                <div className = "queue">
-
-                </div>
-                <div className = "queue"></div>
-                <div className = "queue"></div>
-                <div className = "queue"></div>
+                <QueueComponent/>
+                <QueueComponent/>
+                <QueueComponent/>
+                <QueueComponent/>
             </div>
         </div>
     );

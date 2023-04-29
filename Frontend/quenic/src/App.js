@@ -8,9 +8,8 @@ import Description from "./Components/ModalComponents/DescriptionComponent/Descr
 function App() {
   return (
     <div className="App">
-      <SidePanel />
       <HeaderComponent />
-        <Description />
+        {/*<HomeComponent></HomeComponent>*/}<SidePanel></SidePanel>
     </div>
   );
 }
