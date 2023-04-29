@@ -30,7 +30,10 @@
     font-size: 30px;
     margin-left: 55px;
     background-color: #00ADB5;
+    border: none;
     border-radius: 100px;
+    margin-right: 10px;
+    text-align: center;
     height: 45px;
     width: 45px;
 }
@@ -42,13 +45,4 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 0;
-}
-.queue{
-    height: 20%;
-    width: 100%;
-    padding: 2px;
-    background-color: white;
-    border: 1px solid #DDE1E6;
-    border-radius: 20px;
-    align-items: center;
 }
