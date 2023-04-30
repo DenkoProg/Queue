@@ -1,0 +1,83 @@
+.mainContainer {
+    position: absolute;
+    height: 510px;
+    width: 625px;
+    background-color: #F7F7F8;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.content {
+    padding-top: 15px;
+    position: absolute;
+    align-self: center;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    height: 500px;
+    width: 80%;
+}
+
+.header {
+    color: #00ADB5;
+    font-family: 'Arvo', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.paragraph {
+    color: #393E46;
+    font-family: 'Arvo', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    display: block;
+    filter: brightness(85%);
+}
+
+.email {
+    width: 100%;
+    height: 40px;
+    background-color: #F7F7F8;
+    margin-top: 25px;
+    border-radius: 10px;
+    border-color: #B2C2DB;
+}
+
+.username {
+    width: 100%;
+    height: 40px;
+    background-color: #F7F7F8;
+    margin-top: 25px;
+    border-radius: 10px;
+    border-color: #B2C2DB;
+}
+
+.password {
+    width: 100%;
+    height: 40px;
+    background-color: #F7F7F8;
+    margin-top: 25px;
+    border-radius: 10px;
+    border-color: #B2C2DB;
+}
+
+.submit {
+    background-color: #00ADB5;
+    color: #F7F7F8;
+    margin-top: 25px;
+    width: 50%;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.signIn {
+    text-decoration: underline;
+}
+
