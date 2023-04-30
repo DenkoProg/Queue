@@ -3,6 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SignUp() {
     return(
+        <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            paddingTop: "400px"
+        }}>
         <div className={classes.mainContainer}>
             <div className={classes.content}>
                 <div className={classes.header}>Create An Account</div>
@@ -18,6 +25,7 @@ function SignUp() {
 
                 </form>
             </div>
+        </div>
         </div>
     )
 }
