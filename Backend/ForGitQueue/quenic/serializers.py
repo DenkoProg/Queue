@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Queue, QueueMembership
 
 class QueueSerializer(serializers.ModelSerializer):
@@ -7,10 +7,11 @@ class QueueSerializer(serializers.ModelSerializer):
         model = Queue
         fields = ('id', 'creator', 'name', 'description', 'users')
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer): # new
     class Meta:
-        model = User
-        fields = ('id', 'username', 'email')
+        model = get_user_model()
+        fields = ('id', 'username',)
+
 
 class QueueMembershipSerializer(serializers.ModelSerializer):
     class Meta:
