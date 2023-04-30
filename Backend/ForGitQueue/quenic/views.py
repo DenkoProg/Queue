@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
-from rest_framework.views import APIView
+from rest_framework import viewsets, permissions
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -8,6 +7,7 @@ from rest_framework.response import Response
 
 from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer
 from .models import Queue, User, QueueMembership
+from .permissions import IsCreatorOrReadOnly
 
 
 # Create your views here.

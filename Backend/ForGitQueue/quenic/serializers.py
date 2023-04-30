@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Queue, QueueMembership
 
-class QueueSerializer(serializers.HyperlinkedModelSerializer):
+class QueueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Queue
         fields = ('id', 'creator', 'name', 'description', 'users')
