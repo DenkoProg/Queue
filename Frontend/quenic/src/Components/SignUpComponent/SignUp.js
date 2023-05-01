@@ -1,5 +1,6 @@
 import classes from "./SignUp.module.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState, useEffect} from 'react';
 
 function SignUp() {
     return(

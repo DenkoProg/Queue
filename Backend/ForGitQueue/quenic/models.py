@@ -13,6 +13,30 @@ class Queue(models.Model):
     def is_creator(self, user):
         return self.creator == user
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class QueueMembership(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     queue = models.ForeignKey(Queue, on_delete=models.CASCADE)

@@ -6,9 +6,17 @@ function HomeQueues () {
     const [queues, setQueues] = useState([]);
     async function getQueues(){
         try{
-            const response = await fetch('https://localhost:8000/queues');
+            // const token = '2880c8980ae5d149d202c76b8ed76b17799c9aae';
+            const response = await fetch('http://127.0.0.1:8000/api/v1/queues/', {
+                    // headers: {
+                    //     'Authorization': `Bearer ${token}`,
+                    //     'Content-Type': 'application/json'
+                    // }
+            }
+            );
             const data = await response.json();
             setQueues(data);
+            console.log(data);
         }
         catch (error){
             console.error('Denys sucks dick:', error);
@@ -24,9 +32,9 @@ function HomeQueues () {
                 <button className = "add-title-button">+</button>
             </div>
             <div className = "queues">
-                {queues.map((queue) => {
+                {queues.map((queue) => (
                     <QueueComponent key = {queue.description} name = {queue.name} description = {queue.description} />
-                })}
+                ))}
             </div>
         </div>
     );
