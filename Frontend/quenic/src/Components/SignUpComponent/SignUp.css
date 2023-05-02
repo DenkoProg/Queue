@@ -1,0 +1,101 @@
+@import "../../cfonts.css";
+.main-container {
+    position: absolute;
+    height: 460px;
+    width: 520px;
+    top: 15%;
+    background-color: #F7F7F8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.signup-text-content{
+    height: 15%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-title{
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-family: Arvo, sans-serif;
+    font-weight: bold;
+    color: #00ADB5;
+}
+
+.signup-text{
+    width: 80%;
+    color: #393E46;
+    text-align: center;
+    font-family: Arvo, sans-serif;
+    font-size: 12px;
+}
+
+.signup-form{
+    height: 70%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.signup-inputs{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.signup-input{
+    height: 19%;
+    width: 100%;
+    padding-left: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    color: #393E46;
+}
+
+.email{
+    background: url(../../images/email.svg) no-repeat scroll 7px 15px;
+    padding-bottom: 2px;
+}
+.user{
+    background: url(../../images/user.svg) no-repeat scroll 7px 12px;
+}
+.password{
+    background: url(../../images/password.svg) no-repeat scroll 7px 11.5px;
+}
+
+.signup-create{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signup-button{
+    height: 65%;
+    width: 70%;
+    color: white;
+    border: 0;
+    font-size: 20px;
+    font-family: Arvo, sans-serif;
+    border-radius: 15px;
+    background-color: #00ADB5;
+}
+
+.login-link{
+    text-decoration: none;
+    color: #393E46;
+    font-family: Arvo, sans-serif;
+    font-size: 11px;
+}
+
