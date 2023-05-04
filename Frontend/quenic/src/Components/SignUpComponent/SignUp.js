@@ -1,6 +1,6 @@
-import classes from "./SignUp.module.css";
+import  "./SignUp.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {useState, useEffect} from 'react';
+// import React, {useState, useEffect} from 'react';
 
 function SignUp() {
     return(
@@ -9,23 +9,24 @@ function SignUp() {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            paddingTop: "400px"
         }}>
-        <div className={classes.mainContainer}>
-            <div className={classes.content}>
-                <div className={classes.header}>Create An Account</div>
-                <div className={classes.paragraph}>Create an account to be able to join queues!</div>
-                <form>
-                    <input type="email" name="Email" className={classes.email} placeholder={"Enter your email address"}/>
-                    <input type="text" name="Username" className={classes.username} placeholder={"Enter your Username"}/>
-                    <input type="password" name="Password" className={classes.password} placeholder={"Enter your Password"}/>
-                    <input type="password" name="ConfirmPassword" className={classes.password} placeholder={"Confirm your Password"}/>
-
-                    <input type="submit" value="Create Account" className={classes.submit} />
-                    <div className={classes.paragraph}>Already have an Account? <span className={classes.signIn}>Sign In</span></div>
-
-                </form>
+        <div className = "main-container">
+            <div className = "signup-text-content">
+                <h4 className = "signup-title">Create An Account</h4>
+                <span className= "signup-text">Create an account to enjoy all the services without any ads for free!</span>
             </div>
+            <form className = "signup-form">
+                <div className = "signup-inputs">
+                    <input placeholder = "Enter your Email address" className = "signup-input email"/>
+                    <input placeholder = "Enter your Username" className = "signup-input user"/>
+                    <input placeholder = "Enter your Password" className = "signup-input password"/>
+                    <input placeholder = "Confirm your Password" className = "signup-input password"/>
+                </div>
+                <div className = "signup-create">
+                <button className = "signup-button" type="submit">Create Account</button>
+                <a className = "login-link">Already Have An Account? Sign In</a>
+                </div>
+            </form>
         </div>
         </div>
     )

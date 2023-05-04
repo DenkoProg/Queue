@@ -30,6 +30,7 @@
 
 .left-side :hover{
     cursor: pointer;
+    color: #00ADB5;
 }
 
 .logo{
