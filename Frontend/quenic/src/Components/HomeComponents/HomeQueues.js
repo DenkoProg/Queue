@@ -7,7 +7,7 @@ function HomeQueues () {
     async function getQueues(){
         try{
             // const token = '2880c8980ae5d149d202c76b8ed76b17799c9aae';
-            const response = await fetch('http://127.0.0.1:8000/api/v1/queues/', {
+            const response = await fetch('http://127.0.0.1:8000/queues/', {
                     // headers: {
                     //     'Authorization': `Bearer ${token}`,
                     //     'Content-Type': 'application/json'

@@ -15,12 +15,11 @@ function App() {
       {/*<SidePanel />*/}
       <HeaderComponent />
       <FooterComponent />
-        <SignUp />
+        {/*<SignUp />*/}
         {/*<Description />*/}
-        {/*<HomeComponent />*/}
+        <HomeComponent />
         {/*<JoinQueue />*/}
         {/*<CreateQueue />*/}
-
 
     </div>
   );
