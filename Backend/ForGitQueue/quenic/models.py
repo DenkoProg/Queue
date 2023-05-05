@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 
 class Queue(models.Model):
+    code = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     creator = models.ForeignKey(User, on_delete=models.PROTECT, related_name='queues_created')
     name = models.CharField(max_length=255)
     description = models.TextField()
