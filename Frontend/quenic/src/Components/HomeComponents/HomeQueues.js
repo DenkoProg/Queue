@@ -3,6 +3,7 @@ import QueueComponent from "./QueueComponent";
 import {useEffect, useState} from 'react'
 
 function HomeQueues() {
+    const test = [{name: 'aasda', description: 'asdasdasd'}]
     const [queues, setQueues] = useState([]);
 
     async function getQueues() {
@@ -49,7 +50,7 @@ function HomeQueues() {
                 <button className="add-title-button">+</button>
             </div>
             <div className="queues">
-                {queues.map((queue) => (
+                {test.map((queue) => (
                     <QueueComponent key={queue.description} name={queue.name} description={queue.description}/>
                 ))}
             </div>
