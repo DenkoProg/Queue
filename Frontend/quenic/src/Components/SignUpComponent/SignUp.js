@@ -4,12 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SignUp() {
     return(
-        <div style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-        }}>
         <div className = "main-container">
             <div className = "signup-text-content">
                 <h4 className = "signup-title">Create An Account</h4>
@@ -27,7 +21,6 @@ function SignUp() {
                 <a className = "login-link">Already Have An Account? Sign In</a>
                 </div>
             </form>
-        </div>
         </div>
     )
 }

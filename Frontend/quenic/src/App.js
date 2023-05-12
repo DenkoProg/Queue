@@ -8,19 +8,31 @@ import JoinQueue from "./Components/ModalComponents/JoinQueueComponent/JoinQueue
 import FooterComponent from "./Components/FooterComponent/FooterComponent";
 import CreateQueue from "./Components/ModalComponents/CreateQueueComponent/CreateQueue";
 import SignUp from "./Components/SignUpComponent/SignUp";
+import React, {useRef, useCallback,useState} from "react";
 
 function App() {
+
+    const sidePanelRef = useRef(null);
+
+    const toggleSidePanel = useCallback(() => {
+        console.log('App: called')
+        if (sidePanelRef.current) {
+            sidePanelRef.current.toggleSidePanel();
+        }
+    }, []);
+
   return (
     <div className="App">
-      {/*<SidePanel />*/}
-      <HeaderComponent />
-      <FooterComponent />
-        {/*<SignUp />*/}
-        {/*<Description />*/}
-        <HomeComponent />
-        {/*<JoinQueue />*/}
-        {/*<CreateQueue />*/}
-
+    <SidePanel ref={sidePanelRef} />
+        <HeaderComponent toggleSidePanel={toggleSidePanel} />
+        <FooterComponent />
+        <div /*className="modal-container"*/>
+            {/*<Description />*/}
+            <HomeComponent />
+            {/*<JoinQueue />*/}
+            {/*<CreateQueue />*/}
+            {/*<SignUp />*/}
+        </div>
     </div>
   );
 }

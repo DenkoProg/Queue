@@ -1,15 +1,17 @@
 import './HeaderComponent.css'
 import {RxHamburgerMenu} from 'react-icons/rx'
 import {FaUser} from 'react-icons/fa'
-function HeaderComponent () {
+function HeaderComponent ({ toggleSidePanel }) {
     return(
         <div className = "header">
             <div className = "left-side">
-                <RxHamburgerMenu className = "hamburger-menu"></RxHamburgerMenu>
+                <button onClick={toggleSidePanel} className="hamburger-menu-button">
+                <RxHamburgerMenu  className = "hamburger-menu" />
+                </button>
                 <a className = "logo">Quenic</a>
             </div>
             <div className= "right-side">
-                <FaUser className = "user-icon"></FaUser>
+                <FaUser className = "user-icon"/>
             </div>
         </div>
     );
