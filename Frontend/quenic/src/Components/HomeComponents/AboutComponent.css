@@ -28,6 +28,8 @@
     color: #00ADB5;
 }
 .about-container-button{
+    width: 30px;
+    height: 30px;
     color: #222831;
     font-size: 30px;
     font-family: 'Arvo' , sans-serif;

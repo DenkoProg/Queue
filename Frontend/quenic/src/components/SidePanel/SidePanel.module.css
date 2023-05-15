@@ -3,10 +3,16 @@
     width: 256px;
     height: 100%;
     box-sizing: border-box;
-    left: 0;
+    left: -256px;
     top: 0;
     background-color: #222831;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+    transition: left 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.root.open {
+    left: 0;
 }
 
 .listElementFirst {
@@ -14,21 +20,40 @@
     width: 256px;
     height: 40px;
     display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
 }
 
 .listElementLast {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 256px;
     height: 40px;
     display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    cursor: pointer;
+
 }
 
 .listElement {
     width: 256px;
     height: 40px;
     display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+}
+
+.listElementFirst:hover, .listElementLast:hover, .listElement:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 .home {
@@ -57,7 +82,7 @@
     width: 25px;
     height: 25px;
     display: flex;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 
 .favoriteQueues {
@@ -76,20 +101,20 @@
     width: 18px;
     display: flex;
     margin-top: 3px;
-    margin-left: 18px;
+    margin-left: 8px;
 }
 
 .settingsImage {
     height: 24px;
     width: 24px;
     display: flex;
-    margin-left: 16px;
+    margin-left: 6px;
 }
 
 .infoImage {
     height: 24px;
     width: 24px;
     display: flex;
-    margin-left: 16px;
+    margin-left: 6px;
 }
 
