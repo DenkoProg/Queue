@@ -59,6 +59,16 @@
     display: flex;
     align-items: center;
 }
+
+.right-side-bigger{
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    right: 0;
+    width: 30%;
+}
+
 .user-icon{
     height: 100%;
     width: 100%;
@@ -67,4 +77,30 @@
 
 .right-side :hover{
     cursor: pointer;
+}
+
+.signInButton {
+    position: relative;
+    width: 20%;
+    margin-right: 10px;
+    height: 40px;
+    background-color: #00ADB5;
+    color: #00ADB5 !important;
+    border: none !important;
+}
+
+.signUpButton {
+    border-radius: 20px !important;
+    position: relative;
+    width: 30%;
+    margin-right: 10px;
+    height: 40px;
+    background-color: #00ADB5 !important;
+    color: #F7F7F8 !important;
+    border: none !important;
+
+}
+
+.signUpButton:hover {
+    background-color: #21B7A9 !important;
 }
