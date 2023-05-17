@@ -4,8 +4,18 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    position: fixed;
-    top: 0;
+    position: relative;
+    top: 35px;
     left: 0;
     z-index: 5;
+    border: rgba(0, 0, 0, 0.2);
+}
+
+.main-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }

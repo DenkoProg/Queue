@@ -1,0 +1,89 @@
+.queues-container{
+    min-height: 400px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.queues-info{
+    height: 85px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.info-button{
+    height: 100%;
+    width: 20%;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25);
+    background-color: #222831;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.queue-name-text{
+    font-size: 25px;
+    color: #00ADB5;
+    font-family: 'Arvo' , sans-serif;
+}
+
+.count{
+    width: 30%;
+    padding: 0 15px 0 15px;
+    justify-content: space-evenly;
+}
+
+.info-counter{
+    height: 30px;
+    width: 45px;
+    background-color: #00ADB5;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+
+.description{
+    padding: 0 15px 0 15px;
+    justify-content: space-evenly;
+}
+
+.description-image{
+    background: url("../../images/darrow.svg");
+    height: 30px;
+    width: 30px;
+}
+
+.users-container{
+    min-height: 200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.queue-button-container{
+    height: 80px;
+    width: 50%;
+    margin-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.queue-button{
+    height: 50%;
+    width: 60%;
+    background: #00ADB5;
+    color: white;
+    font-family: 'Arvo' , sans-serif;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+}

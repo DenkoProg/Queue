@@ -1,5 +1,5 @@
 import './HomeQueues.css'
-import QueueComponent from "./QueueComponent";
+import HomeQueue from "./HomeQueue";
 import React, {useEffect, useState} from 'react'
 import JoinQueue from "../ModalComponents/JoinQueueComponent/JoinQueue";
 import SignUp from "../SignUpComponent/SignUp";
@@ -7,7 +7,7 @@ import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
 
 
 function HomeQueues() {
-    const test = [{name: 'aasda', description: 'asdasdasd'}]
+    const test = [{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'}]
     const [queues, setQueues] = useState([]);
     const [showJoinQueue, setShowJoinQueue] = useState(false)
     const [showCreateQueue, setShowCreateQueue] = useState(false)
@@ -64,7 +64,7 @@ function HomeQueues() {
             </div>
             <div className="queues">
                 {test.map((queue) => (
-                    <QueueComponent key={queue.description} name={queue.name} description={queue.description}/>
+                    <HomeQueue key={queue.description} name={queue.name} description={queue.description}/>
                 ))}
             </div>
             {!showCreateQueue && showJoinQueue && <div className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}

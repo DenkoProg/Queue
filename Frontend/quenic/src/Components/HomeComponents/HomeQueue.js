@@ -1,6 +1,6 @@
 import {BsImages} from "react-icons/bs";
-import './QueueComponent.css'
-function QueueComponent (props) {
+import './HomeQueue.css'
+function HomeQueue (props) {
     return(
         <div className = "queue">
             <div className = "left-queue-side">
@@ -17,4 +17,4 @@ function QueueComponent (props) {
     )
 }
 
-export default QueueComponent;
+export default HomeQueue;

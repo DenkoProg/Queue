@@ -5,6 +5,7 @@
     background-color: white;
     border: 1px solid #DDE1E6;
     display: flex;
+    margin: 0 0 15px 0;
     justify-content: space-between;
     border-radius: 10px;
     align-items: center;
