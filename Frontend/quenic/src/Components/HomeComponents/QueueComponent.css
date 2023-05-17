@@ -12,9 +12,9 @@
 }
 .left-queue-side{
     height: 100%;
-    width: 55%;
+    width: 75%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 .queue-image{
@@ -22,6 +22,7 @@
     width: 30px;
 }
 .queue-text-container{
+    margin-left:15px;
     height: 85%;
     width: 80%;
     display: flex;
@@ -29,17 +30,26 @@
     justify-content: space-between;
 }
 .queue-name{
-    font-size: 20px;
+    font-size: 19px;
     font-family: 'Arvo', sans-serif;
     font-weight: bold;
     color: #21272A;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 }
+
 .queue-description{
     font-family: 'Arvo', sans-serif;
     font-size: 14px;
     margin-left: 1px;
     color: #697077;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 }
 .right-queue-side{
     height: 100%;
