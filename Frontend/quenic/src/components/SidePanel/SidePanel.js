@@ -7,13 +7,14 @@ import settingsIcon from './images/Settings.png'
 import aboutUsIcon from './images/AboutUs.png'
 import logOutIcon from './images/LogOut.png'
 import React, {useState, forwardRef, useImperativeHandle} from 'react'
-
+import { logOut } from "../SignUpComponent/LogOut";
+import { useNavigate } from "react-router-dom";
 
 
 
 const SidePanel = forwardRef((props, ref) => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate = useNavigate();
     function toggleSidePanel() {
         console.log('SidePanel: yes')
         setIsOpen(!isOpen);
@@ -23,8 +24,19 @@ const SidePanel = forwardRef((props, ref) => {
         toggleSidePanel,
     }));
 
+    const handleLogout = async () => {
+        await logOut();
+        navigate('/signin');
+        toggleSidePanel();
+    }
+
+    const handleHome = async () => {
+        navigate('/')
+        toggleSidePanel()
+    }
+
     return (<div className={`${classes.root} ${isOpen ? classes.open : ''}`}>
-        <div className={classes.listElementFirst}>
+        <div className={classes.listElementFirst} onClick={handleHome}>
             <img src={homeIcon} className={classes.image} alt="Home Icon"/>
             <div className={classes.home}>Home</div>
         </div>
@@ -48,7 +60,7 @@ const SidePanel = forwardRef((props, ref) => {
             <img src={aboutUsIcon} className={classes.infoImage} alt="Info Icon"/>
             <div className={classes.text}>About Us</div>
         </div>
-        <div className={classes.listElementLast}>
+        <div className={classes.listElementLast} onClick={ handleLogout }>
             {<img src={logOutIcon} className={classes.image} alt="Logout Icon"/>}
             <div className={classes.text}>Log Out</div>
         </div>

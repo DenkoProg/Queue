@@ -1,9 +1,22 @@
 import './HomeQueues.css'
 import QueueComponent from "./QueueComponent";
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import JoinQueue from "../ModalComponents/JoinQueueComponent/JoinQueue";
+import SignUp from "../SignUpComponent/SignUp";
+import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
+
 
 function HomeQueues() {
     const [queues, setQueues] = useState([]);
+    const [showJoinQueue, setShowJoinQueue] = useState(false)
+    const [showCreateQueue, setShowCreateQueue] = useState(false)
+    const handleAddQueueClick = () => {
+        setShowJoinQueue(!showJoinQueue);
+    }
+
+    const handleCreateQueueClick = () => {
+        setShowCreateQueue(!showCreateQueue);
+    }
 
     async function getQueues() {
         try {
@@ -46,13 +59,15 @@ function HomeQueues() {
         <div className="queues-wrapper">
             <div className="queues-title">
                 <span className="title-text">Your Queues</span>
-                <button className="add-title-button">+</button>
+                <button className="add-title-button" onClick={handleAddQueueClick}>+</button>
             </div>
             <div className="queues">
                 {queues.map((queue) => (
                     <QueueComponent key={queue.description} name={queue.name} description={queue.description}/>
                 ))}
             </div>
+            {!showCreateQueue && showJoinQueue && <div className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
+            {showCreateQueue && <div className="modal-container"><CreateQueue onExit={handleCreateQueueClick} /></div>}
         </div>
     );
 }

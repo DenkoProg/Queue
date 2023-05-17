@@ -64,3 +64,13 @@
     border-radius: 10px;
 }
 
+.exitImage {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.exitImage:hover {
+    cursor:pointer;
+}
+
