@@ -2,6 +2,8 @@ import "./SignUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {login} from "./SignIn";
+
 
 function SignUp() {
     const navigate = useNavigate();
@@ -47,10 +49,13 @@ function SignUp() {
             );
 
             if (response.ok) {
-                setRegistrationSuccess(true);
-                setTimeout(() => {
-                    navigate("/");
-                }, 2000);
+                const loginResponse = await login(formData.username, formData.password)
+                if (loginResponse) {
+                    setRegistrationSuccess(true);
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 2000);
+                }
             } else {
                 console.error("Registration failed");
             }

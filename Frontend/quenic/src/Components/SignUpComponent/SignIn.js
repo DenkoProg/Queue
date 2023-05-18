@@ -7,6 +7,32 @@ export function isLoggenIn() {
     return !!localStorage.getItem('token')
 }
 
+export async function login(username, password) {
+    try {
+        const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username: username, password: password}),
+        })
+
+        if (!response.ok) {
+            throw new Error('Login failed: ' + response.statusText);
+        }
+
+        const data = await response.json();
+        const token = data.key;
+
+        // Save the token in localStorage
+        localStorage.setItem('token', token);
+        return true;
+    } catch (error) {
+        console.error(error)
+        return false;
+    }
+}
+
 function SignIn() {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
@@ -29,30 +55,7 @@ function SignIn() {
         }, 20);
     }
 
-    async function login(username, password) {
-        try {
-            const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({username: username, password: password}),
-            })
 
-            if (!response.ok) {
-                throw new Error('Login failed: ' + response.statusText);
-            }
-
-            const data = await response.json();
-            const token = data.key;
-
-            // Save the token in localStorage
-            localStorage.setItem('token', token);
-
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
     return (
         <div className="main-container-signin">

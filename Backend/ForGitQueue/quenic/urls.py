@@ -1,9 +1,14 @@
-from rest_framework.routers import SimpleRouter
-from .views import UserViewSet, QueueViewSet, QueueMembershipViewSet
+from rest_framework.routers import DefaultRouter, SimpleRouter
+from .views import QueueViewSet, UserViewSet, QueueMembershipViewSet
+from django.urls import include, path
 
-router = SimpleRouter()
-router.register('users', UserViewSet, basename='users')
-router.register('queues', QueueViewSet, basename='queues')
-router.register('queue_memberships', QueueMembershipViewSet, basename='queues')
+router = DefaultRouter()
+router.register(r'queues', QueueViewSet)
+router.register(r'users', UserViewSet)
+queue_router = SimpleRouter()
+queue_router.register(r'members', QueueMembershipViewSet, basename='queue-members')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+    path('queues/<int:queue_id>/', include(queue_router.urls)),
+]
