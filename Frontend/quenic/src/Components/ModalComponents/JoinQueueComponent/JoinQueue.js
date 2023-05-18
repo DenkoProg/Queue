@@ -7,6 +7,7 @@ import Exit from './images/Exit.png'
 
 function JoinQueue({onExit, onCreateQueueClick}) {
     return (
+
         <div className={classes.mainContainer}>
             <img src={Exit} className={classes.exitImage} alt={"Exit"} onClick={onExit}/>
             <div className={classes.textBlock}>
@@ -16,8 +17,18 @@ function JoinQueue({onExit, onCreateQueueClick}) {
                     <input type="text" className={classes.input} placeholder="Your code"/>
                 </form>
             </div>
-            <Button onClick={onCreateQueueClick} variant="dark" className={classes.addButton}><img src={Add} className={classes.addImage} alt={"Add"}></img>Create new</Button>
-            <Button className={classes.findButton} variant="outline-secondary"><img src={Find} className={classes.findImage} alt={"Find"}></img>Find queue</Button>
+            <Button onClick={onCreateQueueClick} variant="dark" className={classes.addButton}>
+                <img src={Add} className={classes.addImage} alt={"Add"}></img>
+                <span className = {classes.joinButtonText}> Create new</span>
+            </Button>
+            <Button className={classes.findButton} variant="outline-secondary">
+                <img style = {{
+                    marginRight: '10px'
+                }} src={Find} className={classes.findImage} alt={"Find"}></img>
+                <span style = {{
+                    justifyContent: 'flex-start'
+                }} className = {classes.joinButtonText}> Find queue</span>
+            </Button>
         </div>)
 }
 

@@ -7,11 +7,11 @@
     align-items: center;
 }
 .queues-info{
-    height: 85px;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 
 .info-button{
@@ -70,7 +70,7 @@
 .queue-button-container{
     height: 80px;
     width: 50%;
-    margin-top: 30px;
+    margin-top: 50px;
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;

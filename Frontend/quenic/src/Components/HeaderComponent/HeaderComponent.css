@@ -11,7 +11,7 @@
     margin-bottom: 10px;
     background: #222831;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    z-index: 15;
+    z-index: 4;
 }
 
 .left-side{
@@ -81,6 +81,7 @@
 
 .signInButton {
     position: relative;
+    padding: 0;
     width: 20%;
     margin-right: 10px;
     height: 40px;
@@ -92,6 +93,7 @@
 .signUpButton {
     border-radius: 20px !important;
     position: relative;
+    padding: 0;
     width: 30%;
     margin-right: 10px;
     height: 40px;
@@ -103,4 +105,14 @@
 
 .signUpButton:hover {
     background-color: #21B7A9 !important;
+}
+
+@media screen and (max-width: 700px){
+    .signInButton{
+      display: none;
+    }
+
+    .signUpButton{
+        display: none;
+    }
 }

@@ -47,11 +47,15 @@
     width: 100%;
     border-radius: 5px;
     height: 40px;
+    padding-left: 10px;
     border-width: thin;
 }
 
 .addButton {
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     right: 230px;
     bottom: 30px;
     width: 25%;
@@ -61,6 +65,9 @@
 .findButton {
     position: absolute;
     right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     bottom: 30px;
     width: 25%;
     height: 40px;
@@ -73,14 +80,11 @@
 }
 
 .addImage {
-    position: absolute;
-    bottom: 10px;
-    left: 25px;
+    position: relative;
 }
 
 .findImage {
-    position: absolute;
-    left: 25px;
+    position: relative;
 }
 
 .exitImage {
@@ -91,4 +95,13 @@
 
 .exitImage:hover {
     cursor:pointer;
+}
+
+.joinButtonText{
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 69%;
+    height: 100%;
 }
