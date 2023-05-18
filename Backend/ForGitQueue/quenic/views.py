@@ -19,7 +19,7 @@ class QueueMembershipViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queue_id = self.request.query_params.get('queue', None)
+        queue_id = self.kwargs.get('queue_id', None)
         if queue_id is not None:
             queryset = queryset.filter(queue_id=queue_id)
         return queryset
