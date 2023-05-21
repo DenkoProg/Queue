@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from .models import Queue, QueueMembership
 from .permissions import IsCreatorOrReadOnly
 from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer
+from rest_framework.permissions import AllowAny
 
 class QueueViewSet(viewsets.ModelViewSet):
     permission_classes = (IsCreatorOrReadOnly,)
@@ -14,6 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 class QueueMembershipViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
     queryset = QueueMembership.objects.all()
     serializer_class = QueueMembershipSerializer
 
