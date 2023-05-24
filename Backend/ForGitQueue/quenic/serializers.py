@@ -21,4 +21,4 @@ class QueueMembershipSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = QueueMembership
-        fields = ('id','user', 'username', 'queue', 'position')
+        fields = ('id', 'user', 'username', 'queue', 'position')
