@@ -32,7 +32,8 @@ class UserViewSet(viewsets.ModelViewSet):
 class QueueMembershipViewSet(mixins.CreateModelMixin,
                              mixins.RetrieveModelMixin,
                              mixins.UpdateModelMixin,
-                             viewsets.GenericViewSet):
+                             viewsets.GenericViewSet,
+                             mixins.ListModelMixin):
     permission_classes = (AllowAny,)
     queryset = QueueMembership.objects.all()
     serializer_class = QueueMembershipSerializer
