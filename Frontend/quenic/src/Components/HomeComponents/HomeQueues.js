@@ -64,7 +64,7 @@ function HomeQueues() {
             </div>
             <div className="queues">
                 {queues.map((queue) => (
-                    <HomeQueue key={queue.description} name={queue.name} description={queue.description}/>
+                    <HomeQueue key={queue.description} name={queue.name} description={queue.description} user_count={queue.user_count}/>
                 ))}
             </div>
             {!showCreateQueue && showJoinQueue && <div className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
