@@ -13,17 +13,6 @@ class QueueViewSet(viewsets.ModelViewSet):
     queryset = Queue.objects.all()
     serializer_class = QueueSerializer
 
-    @action(detail=True, methods=['delete'], url_path='members/(?P<user_id>\d+)')
-    def remove_membership(self, request, user_id=None, pk=None):
-        if not user_id or not pk:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            QueueMembership.objects.get(queue_id=pk, user_id=user_id).delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-
-        except QueueMembership.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = get_user_model().objects.all()
@@ -45,3 +34,13 @@ class QueueMembershipViewSet(mixins.CreateModelMixin,
             queryset = queryset.filter(queue_id=queue_id)
         return queryset
 
+    def destroy(self, request, *args, **kwargs):
+        queue_id = self.kwargs.get('queue_id')
+        user_id = self.kwargs.get('pk')
+
+        try:
+            QueueMembership.objects.get(queue_id=queue_id, user_id=user_id).delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except QueueMembership.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
