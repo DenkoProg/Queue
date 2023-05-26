@@ -48,3 +48,12 @@
     justify-content: flex-start;
     padding: 0;
 }
+
+@media (max-width: 700px){
+    .queues-wrapper{
+        width: 100%;
+    }
+    .queues-title{
+        display: none;
+    }
+}

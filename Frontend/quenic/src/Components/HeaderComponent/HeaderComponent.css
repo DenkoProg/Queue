@@ -107,12 +107,22 @@
     background-color: #21B7A9 !important;
 }
 
-@media screen and (max-width: 700px){
-    .signInButton{
-      display: none;
+@media (max-width: 700px){
+
+    .logo{
+        font-size: 23px;
     }
 
-    .signUpButton{
+    .hamburger-menu{
+        height: 30px;
+        width: 30px;
+    }
+
+    .right-side-bigger{
         display: none;
+    }
+
+    .header{
+        margin-bottom: 15px;
     }
 }

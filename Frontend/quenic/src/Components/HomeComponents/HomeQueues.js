@@ -7,7 +7,7 @@ import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
 
 
 function HomeQueues() {
-    const test = [{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'}]
+    const test = [{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'}]
     const [queues, setQueues] = useState([]);
     const [showJoinQueue, setShowJoinQueue] = useState(false)
     const [showCreateQueue, setShowCreateQueue] = useState(false)

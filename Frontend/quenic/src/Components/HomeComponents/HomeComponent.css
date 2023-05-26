@@ -6,3 +6,10 @@
     margin-top: 95px;
     margin-left: 100px ;
 }
+
+@media (max-width: 700px) {
+    .home-card{
+        width: 95%;
+        margin: 0;
+    }
+}
