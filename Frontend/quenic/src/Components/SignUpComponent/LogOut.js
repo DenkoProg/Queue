@@ -8,7 +8,6 @@ export async function logOut() {
                 'Authorization': `Token ${localStorage.getItem('token')}`
             }
         })
-        console.log("yay")
         console.log(localStorage.getItem('token'))
 
         if (!response.ok) {
@@ -17,6 +16,7 @@ export async function logOut() {
 
         // Remove the token from localStorage
         localStorage.removeItem('token');
+
 
     } catch (error) {
         console.error(error)

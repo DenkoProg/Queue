@@ -1,11 +1,11 @@
 import './HeaderComponent.css'
 import {RxHamburgerMenu} from 'react-icons/rx'
 import {FaUser} from 'react-icons/fa'
-import {isLoggenIn} from "../SignUpComponent/SignIn";
+import {isLoggedIn} from "../SignUpComponent/SignIn";
 import Button from "react-bootstrap/Button";
 import {useNavigate} from "react-router-dom";
 
-function HeaderComponent ({ toggleSidePanel }) {
+function HeaderComponent ({ toggleSidePanel, isLoggedIn}) {
     const navigate = useNavigate();
     return(
         <div className = "header">
@@ -15,7 +15,7 @@ function HeaderComponent ({ toggleSidePanel }) {
                 </button>
                 <a className = "logo" onClick={() => navigate('/')}>Quenic</a>
             </div>
-                {isLoggenIn() ? (
+                {isLoggedIn ? (
                     <div className= "right-side">
                     <FaUser className = "user-icon"/>
                     </div>

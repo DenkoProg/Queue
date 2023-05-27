@@ -54,7 +54,8 @@ function SignUp() {
                     setRegistrationSuccess(true);
                     setTimeout(() => {
                         navigate("/");
-                    }, 2000);
+                        window.location.reload();
+                    }, 20);
                 }
             } else {
                 console.error("Registration failed");
