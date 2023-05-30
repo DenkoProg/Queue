@@ -43,6 +43,15 @@ class QueueMembershipViewSet(mixins.CreateModelMixin,
     queryset = QueueMembership.objects.all()
     serializer_class = QueueMembershipSerializer
 
+    def create(self, request, *args, **kwargs):
+        user = request.data.get('user')
+        queue = request.data.get('queue')
+
+        if QueueMembership.objects.filter(user=user, queue=queue).exists():
+            return Response({"message": "User is already in the queue"}, status=status.HTTP_400_BAD_REQUEST)
+
+        return super().create(request, *args, **kwargs)
+
     def get_queryset(self):
         queryset = super().get_queryset()
         queue_id = self.kwargs.get('queue_id', None)
