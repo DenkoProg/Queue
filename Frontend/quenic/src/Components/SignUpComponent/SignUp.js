@@ -80,24 +80,28 @@ function SignUp() {
                         placeholder="Enter your Email address"
                         className="signup-input email"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                     <input
                         name="username"
                         placeholder="Enter your Username"
                         className="signup-input user"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                     <input
                         name="password"
                         placeholder="Enter your Password"
                         className="signup-input password"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                     <input
                         name="confirmPassword"
                         placeholder="Confirm your Password"
                         className="signup-input password"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                 </div>
                 <div className="signup-create">

@@ -71,8 +71,8 @@ function CreateQueue({onExit}) {
                 <div className={classes.header}>Create a new Queue</div>
                 <div className={classes.paragraph}>Use Quenic to simplify your routine tasks</div>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="QueueName" className={classes.queueName} placeholder={"Queue Name"} onChange={e => setName(e.target.value)}/>
-                    <textarea name="Description" className={classes.description} placeholder={"Description"} onChange={e => setDescription(e.target.value)}/>
+                    <input type="text" name="QueueName" autoComplete="off" className={classes.queueName} placeholder={"Queue Name"} onChange={e => setName(e.target.value)}/>
+                    <textarea name="Description"  autoComplete="off" className={classes.description} placeholder={"Description"} onChange={e => setDescription(e.target.value)}/>
                     <input type="submit" value="Submit" className={classes.submit} />
                 </form>
             </div>

@@ -10,7 +10,7 @@ export function isLoggedIn() {
     return !!localStorage.getItem('token')
 }
 
-export async function login(username, password) {
+export async function login(username, password, toast) {
     try {
         const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
             method: 'POST',
@@ -29,16 +29,18 @@ export async function login(username, password) {
 
         // Save the token in localStorage
         localStorage.setItem('token', token);
+        toast.current.show({severity: 'success', summary: 'Login successful', detail: 'You are now logged in.', life: 3000});
         return true;
     } catch (error) {
         console.error(error)
+        toast.current.show({severity: 'error', summary: 'Login failed', detail: 'Please check your username and password.', life: 3000});
         return false;
     }
 }
 
-
 function SignIn() {
     const navigate = useNavigate();
+    const toast = useRef(null); // Reference to the toast
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -53,11 +55,13 @@ function SignIn() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await login(formData.username, formData.password);
-        setTimeout(() => {
-            navigate("/");
-            window.location.reload();
-        }, 20);
+        const result = await login(formData.username, formData.password, toast);
+        if (result) {
+            setTimeout(() => {
+                navigate("/");
+                window.location.reload();
+            }, 20);
+        }
     }
 
 
@@ -71,15 +75,17 @@ function SignIn() {
             <form className="signin-form" onSubmit={handleSubmit}>
                 <div className="signin-inputs">
                     <input name="username" placeholder="Enter your Username" className="signin-input user"
-                           onChange={handleInputChange}/>
+                           onChange={handleInputChange} autoComplete="off"/>
                     <input name="password" placeholder="Enter your Password" className="signin-input password"
-                           onChange={handleInputChange}/>
+                           onChange={handleInputChange} autoComplete="off"/>
                 </div>
+
                 <div className="signin-create">
                     <button className="signin-button" type="submit" >Sign In</button>
                     <a className="login-link" onClick={() => navigate('/signup')}>Don't Have An Account? Sign Up</a>
                 </div>
             </form>
+
         </div>
     )
 }
