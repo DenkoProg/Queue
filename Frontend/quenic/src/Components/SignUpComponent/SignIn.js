@@ -2,7 +2,7 @@ import "./SignIn.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState, useEffect, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
-import { Toast } from 'primereact/toast'
+
 
 
 
@@ -10,7 +10,7 @@ export function isLoggedIn() {
     return !!localStorage.getItem('token')
 }
 
-export async function login(username, password, toast) {
+export async function login(username, password) {
     try {
         const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
             method: 'POST',
@@ -29,18 +29,15 @@ export async function login(username, password, toast) {
 
         // Save the token in localStorage
         localStorage.setItem('token', token);
-        toast.current.show({severity: 'success', summary: 'Login successful', detail: 'You are now logged in.', life: 3000});
         return true;
     } catch (error) {
         console.error(error)
-        toast.current.show({severity: 'error', summary: 'Login failed', detail: 'Please check your username and password.', life: 3000});
         return false;
     }
 }
 
 function SignIn() {
     const navigate = useNavigate();
-    const toast = useRef(null); // Reference to the toast
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -55,7 +52,7 @@ function SignIn() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const result = await login(formData.username, formData.password, toast);
+        const result = await login(formData.username, formData.password);
         if (result) {
             setTimeout(() => {
                 navigate("/");
