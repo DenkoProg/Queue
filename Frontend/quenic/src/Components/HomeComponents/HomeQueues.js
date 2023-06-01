@@ -7,7 +7,7 @@ import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
 
 
 function HomeQueues() {
-    const test = [{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'},{name: 'aasda', description: 'asdasdasd'}]
+    // const test = [{name: 'aasda', description: 'asdasdasd'}]
     const [queues, setQueues] = useState([]);
     const [showJoinQueue, setShowJoinQueue] = useState(false)
     const [showCreateQueue, setShowCreateQueue] = useState(false)
@@ -63,8 +63,8 @@ function HomeQueues() {
                 <button className="add-title-button" onClick={handleAddQueueClick}>+</button>
             </div>
             <div className="queues">
-                {test.map((queue) => (
-                    <HomeQueue key={queue.description} name={queue.name} description={queue.description}/>
+                {queues.map((queue) => (
+                    <HomeQueue key={queue.description} name={queue.name} description={queue.description} user_count={queue.user_count}/>
                 ))}
             </div>
             {!showCreateQueue && showJoinQueue && <div className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}

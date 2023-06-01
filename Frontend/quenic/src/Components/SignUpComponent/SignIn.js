@@ -1,18 +1,47 @@
 import "./SignIn.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
 
-export function isLoggenIn() {
+
+
+
+export function isLoggedIn() {
     return !!localStorage.getItem('token')
 }
 
+export async function login(username, password) {
+    try {
+        const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username: username, password: password}),
+        })
+
+        if (!response.ok) {
+            throw new Error('Login failed: ' + response.statusText);
+        }
+
+        const data = await response.json();
+        const token = data.key;
+
+        // Save the token in localStorage
+        localStorage.setItem('token', token);
+        return true;
+    } catch (error) {
+        console.error(error)
+        return false;
+    }
+}
+
 function SignIn() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         password: ''
-    })
+    });
 
     const handleInputChange = (event) => {
         setFormData({
@@ -23,36 +52,15 @@ function SignIn() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await login(formData.username, formData.password);
-        setTimeout(() => {
-            navigate("/");
-        }, 20);
-    }
-
-    async function login(username, password) {
-        try {
-            const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({username: username, password: password}),
-            })
-
-            if (!response.ok) {
-                throw new Error('Login failed: ' + response.statusText);
-            }
-
-            const data = await response.json();
-            const token = data.key;
-
-            // Save the token in localStorage
-            localStorage.setItem('token', token);
-
-        } catch (error) {
-            console.error(error)
+        const result = await login(formData.username, formData.password);
+        if (result) {
+            setTimeout(() => {
+                navigate("/");
+                window.location.reload();
+            }, 20);
         }
     }
+
 
     return (
         <div className="main-container-signin">
@@ -64,15 +72,17 @@ function SignIn() {
             <form className="signin-form" onSubmit={handleSubmit}>
                 <div className="signin-inputs">
                     <input name="username" placeholder="Enter your Username" className="signin-input user"
-                           onChange={handleInputChange}/>
+                           onChange={handleInputChange} autoComplete="off"/>
                     <input name="password" placeholder="Enter your Password" className="signin-input password"
-                           onChange={handleInputChange}/>
+                           onChange={handleInputChange} autoComplete="off"/>
                 </div>
+
                 <div className="signin-create">
                     <button className="signin-button" type="submit" >Sign In</button>
                     <a className="login-link" onClick={() => navigate('/signup')}>Don't Have An Account? Sign Up</a>
                 </div>
             </form>
+
         </div>
     )
 }

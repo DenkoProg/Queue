@@ -2,6 +2,8 @@ import "./SignUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {login} from "./SignIn";
+
 
 function SignUp() {
     const navigate = useNavigate();
@@ -47,10 +49,14 @@ function SignUp() {
             );
 
             if (response.ok) {
-                setRegistrationSuccess(true);
-                setTimeout(() => {
-                    navigate("/");
-                }, 2000);
+                const loginResponse = await login(formData.username, formData.password)
+                if (loginResponse) {
+                    setRegistrationSuccess(true);
+                    setTimeout(() => {
+                        navigate("/");
+                        window.location.reload();
+                    }, 20);
+                }
             } else {
                 console.error("Registration failed");
             }
@@ -74,24 +80,28 @@ function SignUp() {
                         placeholder="Enter your Email address"
                         className="signup-input email"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                     <input
                         name="username"
                         placeholder="Enter your Username"
                         className="signup-input user"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                     <input
                         name="password"
                         placeholder="Enter your Password"
                         className="signup-input password"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                     <input
                         name="confirmPassword"
                         placeholder="Confirm your Password"
                         className="signup-input password"
                         onChange={handleInputChange}
+                        autoComplete="off"
                     />
                 </div>
                 <div className="signup-create">

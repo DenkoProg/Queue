@@ -1,5 +1,5 @@
 .root {
-    position: absolute;
+    position: fixed;
     width: 256px;
     height: 100%;
     box-sizing: border-box;
@@ -8,7 +8,7 @@
     background-color: #222831;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
     transition: left 0.3s ease-in-out;
-    z-index: 3;
+    z-index: 4;
 }
 
 .root.open {

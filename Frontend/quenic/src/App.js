@@ -8,13 +8,14 @@ import JoinQueue from "./Components/ModalComponents/JoinQueueComponent/JoinQueue
 import FooterComponent from "./Components/FooterComponent/FooterComponent";
 import CreateQueue from "./Components/ModalComponents/CreateQueueComponent/CreateQueue";
 import SignUp from "./Components/SignUpComponent/SignUp";
-import SignIn from "./Components/SignUpComponent/SignIn";
-import React, {useRef, useCallback} from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import SignIn, {isLoggedIn} from "./Components/SignUpComponent/SignIn";
+import React, {useRef, useCallback, useState, useEffect} from "react";
+import {BrowserRouter as Router, Route, Routes, useLocation} from "react-router-dom";
 import HomeQueue from "./Components/HomeComponents/HomeQueue";
 import Queue from "./Components/Queue/Queue";
 
 function App() {
+
 
     const sidePanelRef = useRef(null);
 
@@ -25,11 +26,17 @@ function App() {
         }
     }, []);
 
+    const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+
+    useEffect(() => {
+        setLoggedIn(isLoggedIn());
+    }, [])
+
     return (
         <Router>
             <SidePanel ref={sidePanelRef}/>
-            <div className={`main-container`}>
-                <HeaderComponent toggleSidePanel={toggleSidePanel}/>
+            <div className={`main-container main-container-full-height`}>
+                <HeaderComponent isLoggedIn={loggedIn} toggleSidePanel={toggleSidePanel}/>
                 <Routes>
                     <Route path="/signup" element={<div className="modal-container"><SignUp/></div>}/>
                     <Route path="/signin" element={<div className="modal-container"><SignIn/></div>}/>

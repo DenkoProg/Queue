@@ -1,7 +1,9 @@
 import {BsImages} from "react-icons/bs";
 import './HomeQueue.css'
+import { Link } from 'react-router-dom'
 function HomeQueue (props) {
     return(
+        <Link to={`/queue/`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className = "queue">
             <div className = "left-queue-side">
                 <BsImages className = "queue-image"></BsImages>
@@ -11,9 +13,10 @@ function HomeQueue (props) {
                 </div>
             </div>
             <div className = "right-queue-side">
-                <div className = "counter">15</div>
+                <div className = "counter">{props.user_count}</div>
             </div>
         </div>
+        </Link>
     )
 }
 

@@ -5,13 +5,15 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-top: 40px;
 }
 .queues-info{
-    height: 80px;
+    height: 70px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+
 }
 
 .info-button{
