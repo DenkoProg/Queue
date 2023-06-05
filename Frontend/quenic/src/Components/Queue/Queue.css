@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 80px;
+    margin-top: 50px;
 }
 
 .info-button{
