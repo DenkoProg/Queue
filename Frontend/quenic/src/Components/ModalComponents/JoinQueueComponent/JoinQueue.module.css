@@ -1,5 +1,5 @@
 .mainContainer {
-    background-color: #F7F7F8;
+    background-color: #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,7 @@
     width: 750px;
     height: 264px;
     border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .textBlock {

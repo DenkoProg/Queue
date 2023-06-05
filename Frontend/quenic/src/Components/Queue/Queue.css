@@ -11,7 +11,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     margin-top: 50px;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .queue-name-text{
-    font-size: 25px;
+    font-size: 23px;
     color: #00ADB5;
     font-family: 'Arvo' , sans-serif;
 }
@@ -79,12 +79,12 @@
 }
 
 .queue-button{
-    height: 50%;
+    height: 60%;
     width: 60%;
     background: #00ADB5;
     color: white;
     font-family: 'Arvo' , sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     border: none;
     border-radius: 15px;
 }

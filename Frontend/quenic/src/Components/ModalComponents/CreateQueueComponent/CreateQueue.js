@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Exit from "../JoinQueueComponent/images/Exit.png";
 import React, {useState, useEffect} from "react";
 
-async function getCurrentUser() {
+export async function getCurrentUser() {
     const token = localStorage.getItem('token');
     try {
         const response = await fetch('http://localhost:8000/dj-rest-auth/user/', {

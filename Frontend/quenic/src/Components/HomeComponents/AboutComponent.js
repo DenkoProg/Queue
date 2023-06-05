@@ -20,7 +20,7 @@ function AboutComponent() {
                     </p>
                 </div>
                 <span className={`${openIndex === 0 ? 'about-container-details' : 'hidden'}`}>
-          QueueApp is designed to be user-friendly and intuitive, but if you're just getting started, we have prepared a simple guide for you. To get started, you will need to create an account using a valid email address. A confirmation email will be sent to your inbox. Once you have verified your email, log in to access the main dashboard. This is your command center from which you can create and manage your queues, or join existing ones.
+          Quenic is designed to be user-friendly and intuitive, but if you're just getting started, we have prepared a simple guide for you. To get started, you will need to create an account using a valid email address. A confirmation email will be sent to your inbox. Once you have verified your email, log in to access the main dashboard. This is your command center from which you can create and manage your queues, or join existing ones.
         </span>
             </div>
             <div className="about-container">

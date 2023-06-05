@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .content {
@@ -26,7 +27,8 @@
     font-weight: 800;
     font-size: 20px;
     display: block;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .paragraph {
