@@ -5,12 +5,13 @@
     align-items: center;
     justify-content: flex-end;
     width: 100%;
-    margin-top: auto;
+    margin-top: 60px;
     height: 60px;
     bottom: 0;
     left: 0;
     background: #222831;
     z-index: 2;
+    box-sizing: content-box;
 }
 .switch-lang{
     height: 21px;
@@ -23,4 +24,10 @@
     background: #00ADB5;
     border-radius: 32px;
     margin-right: 10px;
+}
+
+@media (max-width: 900px) {
+    .footer{
+        display: none;
+    }
 }

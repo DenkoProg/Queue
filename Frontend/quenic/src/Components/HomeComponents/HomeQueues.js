@@ -1,13 +1,12 @@
 import './HomeQueues.css'
 import HomeQueue from "./HomeQueue";
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom';
 import JoinQueue from "../ModalComponents/JoinQueueComponent/JoinQueue";
-import SignUp from "../SignUpComponent/SignUp";
 import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
 
 
 function HomeQueues() {
-    // const test = [{name: 'aasda', description: 'asdasdasd'}]
     const [queues, setQueues] = useState([]);
     const [showJoinQueue, setShowJoinQueue] = useState(false)
     const [showCreateQueue, setShowCreateQueue] = useState(false)
@@ -21,7 +20,6 @@ function HomeQueues() {
 
     async function getQueues() {
         try {
-            // const token = '2880c8980ae5d149d202c76b8ed76b17799c9aae';
             const response = await fetch('http://127.0.0.1:8000/queues/', {
                     // headers: {
                     //     'Authorization': `Bearer ${token}`,
@@ -56,40 +54,6 @@ function HomeQueues() {
         }
     }
 
-    const modalRef = useRef(); // Create a reference to modal.
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            // Check if the click was outside the modal.
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                setShowJoinQueue(false);
-                setShowCreateQueue(false);
-            }
-        };
-
-        // Add the listener when component mounts.
-        document.addEventListener('mousedown', handleClickOutside);
-
-        // Clean up the listener when component unmounts.
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []); // Empty dependencies array means this effect runs once on mount and cleanup on unmount.
-
-    useEffect(() => {
-        if (showJoinQueue || showCreateQueue) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-
-        // Cleanup function to reset the style when the component unmounts
-        return () => {
-            document.body.style.overflow = 'unset';
-        }
-    }, [showJoinQueue, showCreateQueue]);
-
-
     return (
         <div className="queues-wrapper">
             <div className="queues-title">
@@ -98,11 +62,19 @@ function HomeQueues() {
             </div>
             <div className="queues">
                 {queues.map((queue) => (
-                    <HomeQueue key={queue.description} name={queue.name} description={queue.description} user_count={queue.user_count}/>
+                    <Link to={`/queue/${queue.id}`} key={queue.id}>
+                        <HomeQueue
+                            key = {queue.id}
+                            id = {queue.id}
+                            name={queue.name}
+                            description={queue.description}
+                            user_count={queue.user_count}
+                        />
+                    </Link>
                 ))}
             </div>
-            {!showCreateQueue && showJoinQueue && <div ref={modalRef} className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
-            {showCreateQueue && <div ref={modalRef} className="modal-container"><CreateQueue onExit={handleCreateQueueClick} /></div>}
+            {!showCreateQueue && showJoinQueue && <div className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
+            {showCreateQueue && <div className="modal-container"><CreateQueue onExit={handleCreateQueueClick} /></div>}
         </div>
     );
 }

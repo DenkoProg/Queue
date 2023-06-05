@@ -74,3 +74,37 @@
     color: #21272A;
 }
 
+@media (max-width: 900px) {
+
+    .queue{
+        height: 74px;
+        border-radius: 0;
+    }
+
+    .queue:first-child {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .queue:last-child {
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 0; /* Remove the bottom margin of the last queue */
+    }
+
+    .queue-text-container{
+        height: 75%;
+    }
+
+    .queue-name{
+        font-size: 25px;
+    }
+
+    .queue-description{
+        font-size: 13px;
+    }
+
+    .queue-image{
+        height: 40px;
+        width: 40px;
+    }
+}
+
