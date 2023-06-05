@@ -27,6 +27,7 @@ const SidePanel = forwardRef((props, ref) => {
     const handleLogout = async () => {
         await logOut();
         navigate('/signin');
+        window.location.reload();
         toggleSidePanel();
     }
 
