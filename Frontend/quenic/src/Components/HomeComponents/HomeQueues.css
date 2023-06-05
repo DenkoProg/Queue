@@ -7,6 +7,15 @@
     justify-content: space-between;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color:black;
+}
+
 .queues-title{
     height: 100px;
     width: 100%;
@@ -18,22 +27,21 @@
     margin-bottom: 30px;
     color: #00ADB5;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding-right: 10px;
 }
 
 .title-text{
     font-family: 'Arvo', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .add-title-button{
     font-family: 'Arvo', sans-serif;
     color: white;
     font-size: 30px;
-    margin-left: 55px;
     background-color: #00ADB5;
     border: none;
     border-radius: 100px;
-    margin-right: 10px;
     text-align: center;
     height: 45px;
     width: 45px;
@@ -49,11 +57,24 @@
     padding: 0;
 }
 
-@media (max-width: 700px){
+@media (max-width: 900px){
     .queues-wrapper{
         width: 100%;
     }
     .queues-title{
         display: none;
     }
+}
+
+.title-fix{
+    height: 100%;
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-width{
+    width: 70%;
+    justify-content: center;
 }

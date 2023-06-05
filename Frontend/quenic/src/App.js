@@ -40,8 +40,8 @@ function App() {
                 <Routes>
                     <Route path="/signup" element={<div className="modal-container"><SignUp/></div>}/>
                     <Route path="/signin" element={<div className="modal-container"><SignIn/></div>}/>
-                    <Route path="/" element={<HomeComponent/>}/>
-                    <Route path="/queue" element={<Queue/>}/>
+                    <Route path="/" exact element={<HomeComponent/>}/>
+                    <Route path="/queue/:id" element={<Queue/>}/>
                 </Routes>
                 <FooterComponent/>
             </div>

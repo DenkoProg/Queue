@@ -3,7 +3,7 @@ import './HomeQueue.css'
 import { Link } from 'react-router-dom'
 function HomeQueue (props) {
     return(
-        <Link to={`/queue/`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={`/queue/${props.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className = "queue">
             <div className = "left-queue-side">
                 <BsImages className = "queue-image"></BsImages>

@@ -2,10 +2,11 @@ import './QueueUser.css'
 import {HiOutlineUserCircle} from "react-icons/hi";
 
 function QueueUser (prop) {
+    console.log(prop.email)
     return(
         <div className = {"user-container"}>
             <div className = {"user-position-container"}>
-                <div className = {"user-position"}>1</div>
+                <div className = {"user-position"}>{prop.position}</div>
             </div>
             <div className = {"user-details"}>
                 <HiOutlineUserCircle className = {"user-details-icon"}></HiOutlineUserCircle>

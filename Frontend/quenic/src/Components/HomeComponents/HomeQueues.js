@@ -1,13 +1,12 @@
 import './HomeQueues.css'
 import HomeQueue from "./HomeQueue";
 import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom';
 import JoinQueue from "../ModalComponents/JoinQueueComponent/JoinQueue";
-import SignUp from "../SignUpComponent/SignUp";
 import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
 
 
 function HomeQueues() {
-    // const test = [{name: 'aasda', description: 'asdasdasd'}]
     const [queues, setQueues] = useState([]);
     const [showJoinQueue, setShowJoinQueue] = useState(false)
     const [showCreateQueue, setShowCreateQueue] = useState(false)
@@ -21,7 +20,6 @@ function HomeQueues() {
 
     async function getQueues() {
         try {
-            // const token = '2880c8980ae5d149d202c76b8ed76b17799c9aae';
             const response = await fetch('http://127.0.0.1:8000/queues/', {
                     // headers: {
                     //     'Authorization': `Bearer ${token}`,
@@ -64,7 +62,15 @@ function HomeQueues() {
             </div>
             <div className="queues">
                 {queues.map((queue) => (
-                    <HomeQueue key={queue.description} name={queue.name} description={queue.description} user_count={queue.user_count}/>
+                    <Link to={`/queue/${queue.id}`} key={queue.id}>
+                        <HomeQueue
+                            key = {queue.id}
+                            id = {queue.id}
+                            name={queue.name}
+                            description={queue.description}
+                            user_count={queue.user_count}
+                        />
+                    </Link>
                 ))}
             </div>
             {!showCreateQueue && showJoinQueue && <div className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
