@@ -57,6 +57,7 @@ function HomeQueues() {
     return (
         <div className="queues-wrapper">
             <div className="queues-title">
+                <div className = {"fix-title"}></div>
                 <span className="title-text">Your Queues</span>
                 <button className="add-title-button" onClick={handleAddQueueClick}>+</button>
             </div>
