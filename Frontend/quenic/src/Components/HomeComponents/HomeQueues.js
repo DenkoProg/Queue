@@ -3,7 +3,7 @@ import HomeQueue from "./HomeQueue";
 import React, {useEffect, useState, useRef} from 'react'
 import { Link } from 'react-router-dom';
 import JoinQueue from "../ModalComponents/JoinQueueComponent/JoinQueue";
-import CreateQueue from "../ModalComponents/CreateQueueComponent/CreateQueue";
+import CreateQueue, {getCurrentUser} from "../ModalComponents/CreateQueueComponent/CreateQueue";
 
 
 function HomeQueues() {
@@ -19,17 +19,12 @@ function HomeQueues() {
     }
 
     async function getQueues() {
+        const user = await getCurrentUser()
+        console.log(user)
         try {
-            const response = await fetch('http://127.0.0.1:8000/queues/', {
-                    // headers: {
-                    //     'Authorization': `Bearer ${token}`,
-                    //     'Content-Type': 'application/json'
-                    // }
-                }
-            );
+            const response = await fetch(`http://127.0.0.1:8000/users/${user.pk}/queues`);
             const data = await response.json();
             setQueues(data);
-            console.log(data);
         } catch (error) {
             console.error('Denys sucks dick:', error);
         }

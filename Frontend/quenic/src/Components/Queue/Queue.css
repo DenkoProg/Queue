@@ -88,3 +88,7 @@
     border: none;
     border-radius: 15px;
 }
+
+.user-container{
+    background-color: #F7F7F8!important;
+}

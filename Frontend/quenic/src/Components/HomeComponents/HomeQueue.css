@@ -2,7 +2,7 @@
 .queue{
     height: 65px;
     width: 100%;
-    background-color: white;
+    background-color: #F7F7F8;
     border: 1px solid #DDE1E6;
     display: flex;
     margin: 0 0 15px 0;
@@ -67,7 +67,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Arvo', sans-serif;
-    background: #F2F4F8;
+    background: #E6E7EB;
     border-radius: 12px;
     margin-right: 5px;
     font-size: 14px;
