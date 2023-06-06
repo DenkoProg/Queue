@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
-from .models import Queue, QueueMembership
+from .models import Queue, QueueMembership, User
 from .permissions import IsCreatorOrReadOnly
 from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer
 from rest_framework.permissions import AllowAny
@@ -20,6 +20,11 @@ class QueueViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queue)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    def perform_create(self, serializer):
+        queue = serializer.save()
+        creator_id = self.request.data['creator']
+        user = User.objects.get(id=creator_id)
+        QueueMembership.objects.create(user=user, queue=queue)
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
