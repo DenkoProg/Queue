@@ -10,6 +10,7 @@ function Queue() {
     const [queueData, setQueueData] = useState({});
     const [userData, setUserData] = useState([{}]);
     const [showDescription, setShowDescription] = useState(false)
+    const [isInQueue, setIsInQueue] = useState(false);
     const location = useLocation();
     const queueDataFromState = location.state?.props;
 
@@ -19,26 +20,65 @@ function Queue() {
 
     const token = localStorage.getItem('token');
 
+    useEffect(() => {
+        const checkIfUserIsInQueue = async () => {
+            try {
+                const user = await getCurrentUser();
+                const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members/`);
+                const members = await response.json();
+
+                const userIsInQueue = members.some(member => member.user === user.pk);
+                setIsInQueue(userIsInQueue);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        checkIfUserIsInQueue();
+    }, [id]);
+
     const addUserToQueue = async () => {
-        const user = getCurrentUser();
-        console.log(user)
         try {
-            const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members`, {
+            const user = await getCurrentUser();
+            const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Token ${token}`,
                 },
                 body: JSON.stringify({
-                    user: parseInt(user.pk),
-                    queue: parseInt(id),
+                    user: user.pk,
+                    queue: id,
                 })
             });
             if (!response.ok) {
                 throw new Error('Failed to add user to queue');
             }
+            setIsInQueue(true);
+            window.location.reload();
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    const deleteUserFromQueue = async () => {
+        try {
+            const user = await getCurrentUser();
+            console.log(user)
+            const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members/${user.pk}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: {
+                    id: user.pk,
+                    queue_id: id,
+                }
+            })
+            setIsInQueue(false)
+            window.location.reload();
+        } catch(error) {
+            console.error(error)
         }
     }
 
@@ -82,7 +122,10 @@ function Queue() {
                 })}
             </div>
             <div className={"queue-button-container"}>
+                {isInQueue ?
+                <button className={"leave-queue-button"} onClick={deleteUserFromQueue}>Leave this queue</button>:
                 <button className={"queue-button"} onClick={addUserToQueue}>Join this queue</button>
+                }
             </div>
             {(showDescription) && <div onClick={handleDescription} className="modal-container"><Description
                 description={queueData.description} code={queueData.code} onClick={handleDescription} onExit={handleDescription}/></div>}

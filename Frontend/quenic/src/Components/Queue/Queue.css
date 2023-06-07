@@ -89,6 +89,17 @@
     border-radius: 15px;
 }
 
+.leave-queue-button{
+    height: 60%;
+    width: 60%;
+    background: #FA6159;
+    color: white;
+    font-family: 'Arvo' , sans-serif;
+    font-size: 18px;
+    border: none;
+    border-radius: 15px;
+}
+
 .user-container{
     background-color: #F7F7F8!important;
 }
