@@ -55,6 +55,7 @@ function Queue() {
                 throw new Error('Failed to add user to queue');
             }
             setIsInQueue(true);
+            queueData.user_count++;
             window.location.reload();
         } catch (error) {
             console.error(error);
@@ -76,6 +77,7 @@ function Queue() {
                 }
             })
             setIsInQueue(false)
+            queueData.user_count--;
             window.location.reload();
         } catch(error) {
             console.error(error)
@@ -83,7 +85,6 @@ function Queue() {
     }
 
     useEffect(() => {
-        // If there's data passed as state, use it instead of fetching from API
         if (queueDataFromState) {
             setQueueData(queueDataFromState);
         } else {

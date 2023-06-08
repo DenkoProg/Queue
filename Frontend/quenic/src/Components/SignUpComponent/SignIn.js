@@ -2,6 +2,12 @@ import "./SignIn.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState, useEffect, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
+import { Messages } from 'primereact/messages';
+import { Button } from 'primereact/button';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 
 
 
@@ -29,14 +35,19 @@ export async function login(username, password) {
 
         // Save the token in localStorage
         localStorage.setItem('token', token);
+
+
         return true;
     } catch (error) {
         console.error(error)
+
+
         return false;
     }
 }
 
 function SignIn() {
+    const messages = useRef(null);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
@@ -54,16 +65,20 @@ function SignIn() {
         event.preventDefault();
         const result = await login(formData.username, formData.password);
         if (result) {
+            messages.current.show({severity: 'success', summary: 'Logged in successfully!'});
             setTimeout(() => {
                 navigate("/");
                 window.location.reload();
-            }, 20);
+            }, 800);
+        } else {
+            messages.current.show({severity: 'error', summary: 'Login failed: Check your credentials'});
         }
     }
 
 
     return (
         <div className="main-container-signin">
+
             <div className="signin-text-content">
                 <h4 className="signin-title">Sign In</h4>
                 <span
@@ -82,7 +97,7 @@ function SignIn() {
                     <a className="login-link" onClick={() => navigate('/signup')}>Don't Have An Account? Sign Up</a>
                 </div>
             </form>
-
+            <Messages ref={messages} className='message-container' />
         </div>
     )
 }

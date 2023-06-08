@@ -11,6 +11,18 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.not-dark-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
 .main-container{
     min-height: inherit;
     width: 100%;
@@ -20,6 +32,15 @@
     justify-content: space-between;
 }
 
+
+
 .main-container-full-height {
     min-height: 100vh !important;
+}
+
+.message-container {
+    position: absolute;
+    right: -400px;
+    bottom: -100px;
+    width: 250px; /* adjust width as per requirement */
 }

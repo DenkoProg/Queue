@@ -1,11 +1,17 @@
 import "./SignUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useState, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import {login} from "./SignIn";
+import { Messages } from 'primereact/messages';
+import { Button } from 'primereact/button';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 
 function SignUp() {
+    const messages = useRef(null);
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -27,6 +33,7 @@ function SignUp() {
         event.preventDefault();
 
         if (formData.password !== formData.confirmPassword) {
+            messages.current.show({severity: 'error', summary: 'Passwords do not match'});
             console.error("Passwords do not match");
             return;
         }
@@ -52,15 +59,18 @@ function SignUp() {
                 const loginResponse = await login(formData.username, formData.password)
                 if (loginResponse) {
                     setRegistrationSuccess(true);
+                    messages.current.show({severity: 'success', summary: 'Registered successfully!'});
                     setTimeout(() => {
                         navigate("/");
                         window.location.reload();
-                    }, 20);
+                    }, 800);
                 }
             } else {
+                messages.current.show({severity: 'error', summary: 'Sign up failed: Check your credentials'});
                 console.error("Registration failed");
             }
         } catch (error) {
+            messages.current.show({severity: 'error', summary: error});
             console.error(error);
         }
     };
@@ -111,9 +121,7 @@ function SignUp() {
                     <a className="login-link" onClick={() => navigate('/signin')}>Already Have An Account? Sign In</a>
                 </div>
             </form>
-            {registrationSuccess && (
-                <div className="success-message">Registration Successful!</div>
-            )}
+            <Messages ref={messages} className='message-container' />
         </div>
     );
 }

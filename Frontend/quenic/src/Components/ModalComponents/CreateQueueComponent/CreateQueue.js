@@ -1,7 +1,12 @@
 import classes from "./CreateQueue.module.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Exit from "../JoinQueueComponent/images/Exit.png";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
+import { Messages } from 'primereact/messages';
+import { Button } from 'primereact/button';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 export async function getCurrentUser() {
     const token = localStorage.getItem('token');
@@ -26,14 +31,22 @@ export async function getCurrentUser() {
 
 
 function CreateQueue({onExit}) {
+    const messages = useRef(null);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        getCurrentUser().then(currentUser => {
-            setUser(currentUser)
-        });
+        try{
+            getCurrentUser().then(currentUser => {
+                setUser(currentUser)
+            });
+        } catch {
+            getCurrentUser().then(currentUser => {
+                setUser(currentUser)
+            });
+        }
+
     }, []);
 
     const handleSubmit = async (event) => {
@@ -55,13 +68,18 @@ function CreateQueue({onExit}) {
                 })
 
                 if(!response.ok){
+                    messages.current.show({severity: 'error', summary: 'Something went wrong. Try again, please'});
                     throw new Error('Network response was not ok')
                 }
+                messages.current.show({severity: 'info', summary: 'Queue has been created!'});
                 onExit();
                 window.location.reload();
             } catch (error) {
+                messages.current.show({severity: 'error', summary: 'Something went wrong. Try again, please'});
                 console.error('Error', error)
             }
+        } else {
+            messages.current.show({severity: 'error', summary: 'User not found'});
         }
     }
     return(
@@ -75,6 +93,7 @@ function CreateQueue({onExit}) {
                     <textarea name="Description"  autoComplete="off" className={classes.description} placeholder={"Description"} onChange={e => setDescription(e.target.value)}/>
                     <input type="submit" value="Submit" className={classes.submit} />
                 </form>
+                <Messages ref={messages} className='message-container' style={{right: '-450px', bottom: '-150px'}} />
             </div>
         </div>
     )

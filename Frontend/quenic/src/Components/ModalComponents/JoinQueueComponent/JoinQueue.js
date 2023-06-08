@@ -4,12 +4,17 @@ import Button from 'react-bootstrap/Button';
 import Add from './images/Add.png'
 import Find from './images/Find.png'
 import Exit from './images/Exit.png'
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {getCurrentUser} from "../CreateQueueComponent/CreateQueue";
 import {useNavigate} from "react-router-dom";
+import { Messages } from 'primereact/messages';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 
 function JoinQueue({onExit, onCreateQueueClick}) {
+    const messages = useRef(null);
     const navigate = useNavigate()
     const [queueCode, setQueueCode] = useState('');
 
@@ -18,11 +23,16 @@ function JoinQueue({onExit, onCreateQueueClick}) {
     }
 
     const searchQueue = async () => {
+        if(queueCode === ''){
+            messages.current.show({severity: 'error', summary: 'You have not provided the code'});
+            return;
+        }
         try {
             const response = await fetch(`http://127.0.0.1:8000/queues/search/${queueCode}`)
             const queue = await response.json();
             navigate(`/queue/${queue.id}`, { state: { props: queue } });
         } catch(error) {
+            messages.current.show({severity: 'error', summary: 'Queue not found'});
             console.error(error);
         }
     }
@@ -50,6 +60,7 @@ function JoinQueue({onExit, onCreateQueueClick}) {
                     justifyContent: 'flex-start'
                 }} className = {classes.joinButtonText}> Find queue</span>
             </Button>
+            <Messages ref={messages} className='message-container' style={{right: '-350px', bottom: '-200px'}} />
         </div>)
 }
 

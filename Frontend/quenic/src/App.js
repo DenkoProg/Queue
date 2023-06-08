@@ -13,6 +13,7 @@ import React, {useRef, useCallback, useState, useEffect} from "react";
 import {BrowserRouter as Router, Route, Routes, useLocation} from "react-router-dom";
 import HomeQueue from "./Components/HomeComponents/HomeQueue";
 import Queue from "./Components/Queue/Queue";
+import {ToastContainer} from "react-toastify";
 
 function App() {
 
@@ -38,27 +39,14 @@ function App() {
             <div className={`main-container main-container-full-height`}>
                 <HeaderComponent isLoggedIn={loggedIn} toggleSidePanel={toggleSidePanel}/>
                 <Routes>
-                    <Route path="/signup" element={<div className="modal-container"><SignUp/></div>}/>
-                    <Route path="/signin" element={<div className="modal-container"><SignIn/></div>}/>
+                    <Route path="/signup" element={<div className="not-dark-modal-container"><SignUp/></div>}/>
+                    <Route path="/signin" element={<div className="not-dark-modal-container"><SignIn/></div>}/>
                     <Route path="/" exact element={<HomeComponent/>}/>
                     <Route path="/queue/:id" element={<Queue/>}/>
                 </Routes>
                 <FooterComponent/>
             </div>
         </Router>
-        // <div className="App">
-        // <SidePanel ref={sidePanelRef} />
-        //     <HeaderComponent toggleSidePanel={toggleSidePanel} />
-        //     <FooterComponent />
-        //     <div className="modal-container">
-        //         {/*<Description />*/}
-        //         {/*<HomeComponent />*/}
-        //         {/*<JoinQueue />*/}
-        //         {/*<CreateQueue />*/}
-        //         {/*<SignUp />*/}
-        //         <SignIn />
-        //     </div>
-        // </div>
     );
 }
 
