@@ -10,6 +10,8 @@ function HomeQueues() {
     const [queues, setQueues] = useState([]);
     const [showJoinQueue, setShowJoinQueue] = useState(false)
     const [showCreateQueue, setShowCreateQueue] = useState(false)
+    const [isLoading, setIsLoading] = useState(true);
+
     const handleAddQueueClick = () => {
         setShowJoinQueue(!showJoinQueue);
     }
@@ -25,6 +27,7 @@ function HomeQueues() {
             const response = await fetch(`http://127.0.0.1:8000/users/${user.pk}/queues`);
             const data = await response.json();
             setQueues(data);
+            setIsLoading(false);
         } catch (error) {
             console.error('Denys sucks dick:', error);
         }
@@ -90,17 +93,20 @@ function HomeQueues() {
                 <button className="add-title-button" onClick={handleAddQueueClick}>+</button>
             </div>
             <div className="queues">
-                {queues.map((queue) => (
-                    <Link to={`/queue/${queue.id}`} key={queue.id}>
-                        <HomeQueue
-                            key = {queue.id}
-                            id = {queue.id}
-                            name={queue.name}
-                            description={queue.description}
-                            user_count={queue.user_count}
-                        />
-                    </Link>
-                ))}
+                {isLoading ?
+                    <div className="queue-skeleton"></div> :
+                    queues.map((queue) => (
+                        <Link to={`/queue/${queue.id}`} key={queue.id}>
+                            <HomeQueue
+                                key = {queue.id}
+                                id = {queue.id}
+                                name={queue.name}
+                                description={queue.description}
+                                user_count={queue.user_count}
+                            />
+                        </Link>
+                    ))
+                }
             </div>
             {!showCreateQueue && showJoinQueue && <div ref={modalRef} className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
             {showCreateQueue && <div ref={modalRef} className="modal-container"><CreateQueue onExit={handleCreateQueueClick} /></div>}

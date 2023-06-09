@@ -27,9 +27,19 @@
 }
 
 .queue-name-text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 10px 0 10px;
     font-size: 23px;
     color: #00ADB5;
     font-family: 'Arvo' , sans-serif;
+}
+
+.queue-name-text:hover {
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
 }
 
 .count{
@@ -103,3 +113,24 @@
 .user-container{
     background-color: #F7F7F8!important;
 }
+
+.button-skeleton {
+    width: 60%; /* match width of your button */
+    height: 60%; /* match height of your button */
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+

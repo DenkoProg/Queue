@@ -1,16 +1,23 @@
 import './Queue.css'
 import QueueUser from "./QueueUser";
 import {useLocation, useParams} from 'react-router-dom';
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Description from "../ModalComponents/DescriptionComponent/Description";
 import {getCurrentUser} from "../ModalComponents/CreateQueueComponent/CreateQueue";
+import { Messages } from 'primereact/messages';
+import { Button } from 'primereact/button';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 function Queue() {
+    const messages = useRef(null);
     const {id} = useParams();
     const [queueData, setQueueData] = useState({});
-    const [userData, setUserData] = useState([{}]);
+    const [userData, setUserData] = useState([]);
     const [showDescription, setShowDescription] = useState(false)
     const [isInQueue, setIsInQueue] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
     const queueDataFromState = location.state?.props;
 
@@ -31,6 +38,8 @@ function Queue() {
                 setIsInQueue(userIsInQueue);
             } catch (error) {
                 console.error(error);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -52,12 +61,17 @@ function Queue() {
                 })
             });
             if (!response.ok) {
+                messages.current.show({severity: 'error', summary: 'Login or create account, please'});
                 throw new Error('Failed to add user to queue');
             }
-            setIsInQueue(true);
-            queueData.user_count++;
             window.location.reload();
+            setTimeout(() => {
+                setIsInQueue(true);
+                queueData.user_count++;
+            }, 400);
+
         } catch (error) {
+            messages.current.show({severity: 'error', summary: 'Login or create account, please'});
             console.error(error);
         }
     }
@@ -76,9 +90,11 @@ function Queue() {
                     queue_id: id,
                 }
             })
-            setIsInQueue(false)
-            queueData.user_count--;
             window.location.reload();
+            setTimeout(() => {
+                setIsInQueue(false);
+                queueData.user_count--;
+            }, 400);
         } catch(error) {
             console.error(error)
         }
@@ -123,10 +139,16 @@ function Queue() {
                 })}
             </div>
             <div className={"queue-button-container"}>
-                {isInQueue ?
+                <Messages ref={messages} className='message-container' style={{right: '50px', bottom: '80px'}} />
+
+                {isLoading ?
+                <div className="button-skeleton"></div> :
+                    (isInQueue ?
                 <button className={"leave-queue-button"} onClick={deleteUserFromQueue}>Leave this queue</button>:
                 <button className={"queue-button"} onClick={addUserToQueue}>Join this queue</button>
+                    )
                 }
+
             </div>
             {(showDescription) && <div onClick={handleDescription} className="modal-container"><Description
                 description={queueData.description} code={queueData.code} onClick={handleDescription} onExit={handleDescription}/></div>}
