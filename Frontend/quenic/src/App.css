@@ -38,9 +38,27 @@
     min-height: 100vh !important;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222831;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ADB5;
+}
+
 .message-container {
     position: absolute;
     right: -400px;
     bottom: -100px;
     width: 250px; /* adjust width as per requirement */
+}
+
+@media (max-width: 720px) {
+    .main-container{
+        justify-content: flex-start;
+    }
 }

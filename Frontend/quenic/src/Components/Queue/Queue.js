@@ -128,7 +128,7 @@ function Queue() {
                     <span className={"queue-name-text"}>{queueData.name}</span>
                 </div>
                 <div className={"info-button count"}>
-                    <span className={"queue-name-text"}>People in queue:</span>
+                    <span className={"queue-name-text t-counter"}>People in queue:</span>
                     <div className={"info-counter"}>{queueData.user_count}</div>
                 </div>
                 <div onClick={handleDescription} className={"info-button description"}>
