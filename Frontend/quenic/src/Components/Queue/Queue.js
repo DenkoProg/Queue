@@ -114,7 +114,10 @@ function Queue() {
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/queues/${id}/members/`)
             .then(response => response.json())
-            .then(data => setUserData(data))
+            .then(data => {
+                const sortedData = data.sort((a, b) => a.position - b.position);
+                setUserData(sortedData)
+            })
             .catch(err => console.error(err));
     }, [id]);
 

@@ -42,3 +42,10 @@ def update_queue_positions(sender, instance, **kwargs):
     class Meta:
         unique_together = ('user', 'queue')
 
+
+
+class SwapRequest(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_swap_request')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_swap_request')
+    queue = models.ForeignKey(Queue, on_delete=models.CASCADE, related_name='swap_requests')
+    accepted = models.BooleanField(default=False)

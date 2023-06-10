@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
-from .models import Queue, QueueMembership, User
+from .models import Queue, QueueMembership, User, SwapRequest
 from .permissions import IsCreatorOrReadOnly
-from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer
+from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer, SwapRequestSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.decorators import action
@@ -61,7 +61,7 @@ class QueueMembershipViewSet(mixins.CreateModelMixin,
         queryset = super().get_queryset()
         queue_id = self.kwargs.get('queue_id', None)
         if queue_id is not None:
-            queryset = queryset.filter(queue_id=queue_id)
+            queryset = queryset.filter(queue_id=queue_id).order_by('position')
         return queryset
 
     def destroy(self, request, *args, **kwargs):
@@ -74,3 +74,21 @@ class QueueMembershipViewSet(mixins.CreateModelMixin,
 
         except QueueMembership.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class SwapRequestViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
+    queryset = SwapRequest.objects.all()
+    serializer_class = SwapRequestSerializer
+
+    def update(self, request, *args, **kwargs):
+        swap_request = self.get_object()
+
+        if swap_request.accepted:
+            sender_membership = QueueMembership.objects.get(user=swap_request.sender, queue=swap_request.queue)
+            receiver_membership = QueueMembership.objects.get(user=swap_request.receiver, queue=swap_request.queue)
+            sender_membership.position, receiver_membership.position = receiver_membership.position, sender_membership.position
+            sender_membership.save()
+            receiver_membership.save()
+
+        return super().update(request, *args, **kwargs)
