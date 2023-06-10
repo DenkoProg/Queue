@@ -91,4 +91,7 @@ class SwapRequestViewSet(viewsets.ModelViewSet):
             sender_membership.save()
             receiver_membership.save()
 
-        return super().update(request, *args, **kwargs)
+        response = super().update(request, *args, **kwargs)
+
+        swap_request.delete()
+        return response
