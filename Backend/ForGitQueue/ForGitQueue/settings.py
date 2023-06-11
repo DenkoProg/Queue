@@ -108,10 +108,10 @@ WSGI_APPLICATION = 'ForGitQueue.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'quenic',
-        'USER': 'quenic_user',
-        'PASSWORD': 'CDLjppJuXSpJVfDxEDc9IAi0VwEjJcv3',
-        'HOST': 'dpg-ch9k9chjvhtimr8tsldg-a.oregon-postgres.render.com',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '12345678',
+        'HOST': 'db-quenic-2.cyfczwc1jhyh.eu-north-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
