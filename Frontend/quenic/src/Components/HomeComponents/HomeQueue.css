@@ -3,13 +3,20 @@
     height: 65px;
     width: 100%;
     background-color: #F7F7F8;
-    border: 1px solid #DDE1E6;
     display: flex;
     margin: 0 0 15px 0;
     justify-content: space-between;
-    border-radius: 10px;
+    border-radius: 12px;
     align-items: center;
     padding-left: 10px;
+}
+.queue:hover{
+    background-color: #A2A6A6;
+    transition: background-color 0.2s;
+}
+.queue:hover .counter {
+    background-color: #C4C5C9;
+    transition: background-color 0.2s;
 }
 .left-queue-side{
     height: 100%;
@@ -34,7 +41,7 @@
     font-size: 19px;
     font-family: 'Arvo', sans-serif;
     font-weight: bold;
-    color: #21272A;
+    color: #2C3438;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -19,7 +19,7 @@
 .info-button{
     height: 100%;
     width: 20%;
-    border-radius: 15px;
+    border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.25);
     background-color: #222831;
     display: flex;
@@ -44,25 +44,27 @@
 }
 
 .count{
-    width: 30%;
+    border-radius: 25px;
+    width: 25%;
     padding: 0 15px 0 15px;
     justify-content: space-evenly;
 }
 
 .info-counter{
+    border-radius: 30px;
     height: 30px;
     width: 45px;
     background-color: #00ADB5;
     font-size: 20px;
     text-align: center;
     color: white;
-    border-radius: 10px;
     font-family: sans-serif;
 }
 
 .description{
     padding: 0 15px 0 15px;
     justify-content: space-evenly;
+    border-radius: 25px;
 }
 
 .description-image{
@@ -100,6 +102,16 @@
     border-radius: 15px;
 }
 
+.queue-button:active {
+    transform: scale(0.95);
+    transition: transform 5s;
+}
+
+.queue-button:hover {
+    background-color: #00858C;
+    transition: background-color 0.2s;
+}
+
 .leave-queue-button{
     height: 60%;
     width: 60%;
@@ -111,8 +123,19 @@
     border-radius: 15px;
 }
 
+.leave-queue-button:active {
+    transform: scale(0.95);
+    transition: transform 5s;
+}
+
+.leave-queue-button:hover {
+    background-color: #A6413C;
+    transition: background-color 0.2s;
+}
+
 .user-container{
     background-color: #F7F7F8!important;
+    border-radius: 20px!important;
 }
 
 .button-skeleton {

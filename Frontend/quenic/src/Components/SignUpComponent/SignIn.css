@@ -104,3 +104,12 @@
     color: #00ADB5;
 }
 
+.signin-button:active {
+    transform: scale(0.95);
+    transition: transform 5s;
+}
+
+.signin-button:hover {
+    background-color: #00858C;
+    transition: background-color 0.2s;
+}
