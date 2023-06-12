@@ -135,4 +135,19 @@
     transition: background-color 0.2s;
 }
 
+@media (max-width: 900px) {
+    .main-container-signup{
+        width: 90%;
+        background-color: #393E46;
+    }
+    .login-link {
+        color: #F7F7F8;
+    }
+    .signup-input{
+        background-color: #F7F7F8;
+    }
+    .signup-text{
+        color: #F7F7F8;
+    }
+}
 

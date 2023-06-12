@@ -80,7 +80,7 @@ function SignUp() {
             <div className="signup-text-content">
                 <h4 className="signup-title">Create An Account</h4>
                 <span className="signup-text">
-          Create an account to enjoy all the services without any ads for free!
+          Create an account to enjoy all the services!
         </span>
             </div>
             <form className="signup-form" onSubmit={handleSubmit}>

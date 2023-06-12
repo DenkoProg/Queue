@@ -82,7 +82,7 @@ function SignIn() {
             <div className="signin-text-content">
                 <h4 className="signin-title">Sign In</h4>
                 <span
-                    className="signin-text">Sign in to enjoy all the services without any ads for free!</span>
+                    className="signin-text">Sign in to enjoy all the services!</span>
             </div>
             <form className="signin-form" onSubmit={handleSubmit}>
                 <div className="signin-inputs">

@@ -54,11 +54,17 @@
     position: absolute;
     right: -400px;
     bottom: -100px;
-    width: 250px; /* adjust width as per requirement */
+    width: 250px;
 }
 
 @media (max-width: 720px) {
     .main-container{
         justify-content: flex-start;
+    }
+    .message-container {
+        position: absolute;
+        right: auto;
+        bottom: -120px;
+        width: 300px;
     }
 }
