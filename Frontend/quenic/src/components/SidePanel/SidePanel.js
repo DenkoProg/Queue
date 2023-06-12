@@ -7,7 +7,7 @@ import settingsIcon from './images/Settings.png'
 import aboutUsIcon from './images/AboutUs.png'
 import logOutIcon from './images/LogOut.png'
 import React, {useState, forwardRef, useImperativeHandle} from 'react'
-import { logOut } from "/src/Components/SignUpComponent/LogOut";
+import { logOut } from "/Components/SignUpComponent/LogOut";
 import { useNavigate } from "react-router-dom";
 
 
@@ -62,7 +62,7 @@ const SidePanel = forwardRef((props, ref) => {
             <div className={classes.text}>About Us</div>
         </div>
         <div className={classes.listElementLast} onClick={ handleLogout }>
-            {<img src={logOutIcon} className={classes.image} alt="Logout Icon"/>}
+            {<img src={logOutIcon} className={classes.image} alt="Log out Icon"/>}
             <div className={classes.text}>Log Out</div>
         </div>
     </div>)
