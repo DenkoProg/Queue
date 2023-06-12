@@ -7,7 +7,7 @@ import settingsIcon from './images/Settings.png'
 import aboutUsIcon from './images/AboutUs.png'
 import logOutIcon from './images/LogOut.png'
 import React, {useState, forwardRef, useImperativeHandle} from 'react'
-import { logOut } from "../SignUpComponent/LogOut";
+import { logOut } from "/src/Components/SignUpComponent/LogOut";
 import { useNavigate } from "react-router-dom";
 
 
