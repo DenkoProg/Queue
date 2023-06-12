@@ -64,6 +64,13 @@ a:hover{
     .queues-title{
         display: none;
     }
+    .add-title-button{
+        width: 70px;
+        height: 70px;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+    }
 }
 
 .title-fix{

@@ -79,11 +79,25 @@ function HomeQueues() {
             document.body.style.overflow = 'unset';
         }
 
-        // Cleanup function to reset the style when the component unmounts
         return () => {
             document.body.style.overflow = 'unset';
         }
     }, [showJoinQueue, showCreateQueue]);
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 900);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
 
     return (
         <div className="queues-wrapper">
@@ -108,6 +122,7 @@ function HomeQueues() {
                     ))
                 }
             </div>
+            {isMobile && <button className="add-title-button" onClick={handleAddQueueClick}>+</button>}
             {!showCreateQueue && showJoinQueue && <div ref={modalRef} className="modal-container"><JoinQueue onExit={handleAddQueueClick} onCreateQueueClick={handleCreateQueueClick} /></div>}
             {showCreateQueue && <div ref={modalRef} className="modal-container"><CreateQueue onExit={handleCreateQueueClick} /></div>}
         </div>
