@@ -1,18 +1,19 @@
-FROM python:3.10
+FROM python:3.10-alpine
 
+ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
-RUN rustup default stable
-
 RUN mkdir /code
 WORKDIR /code
-COPY . /code/
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip
+COPY requirements.txt /code/
 
+RUN \
+apk add --no-cache postgresql-libs && \
+apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
+python3 -m pip install -r requirements.txt --no-cache-dir && \
+apk --purge del .build-deps
+COPY . /code/
 
 EXPOSE 8000
 
-# Run the Django application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
