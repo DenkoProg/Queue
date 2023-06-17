@@ -40,7 +40,7 @@ function SignUp() {
 
         try {
             const response = await fetch(
-                "http://localhost:8000/dj-rest-auth/registration/",
+                "http://18.185.28.225/dj-rest-auth/registration/",
                 {
                     method: "POST",
                     headers: {

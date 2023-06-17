@@ -28,7 +28,7 @@ function JoinQueue({onExit, onCreateQueueClick}) {
             return;
         }
         try {
-            const response = await fetch(`http://127.0.0.1:8000/queues/search/${queueCode}`)
+            const response = await fetch(`http://18.185.28.225/queues/search/${queueCode}`)
             const queue = await response.json();
             navigate(`/queue/${queue.id}`, { state: { props: queue } });
         } catch(error) {

@@ -11,7 +11,7 @@ import 'primeicons/primeicons.css';
 export async function getCurrentUser() {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch('http://localhost:8000/dj-rest-auth/user/', {
+        const response = await fetch('http://18.185.28.225/dj-rest-auth/user/', {
             method: 'GET',
             headers: {
                 'Authorization': `Token ${token}`,
@@ -54,7 +54,7 @@ function CreateQueue({onExit}) {
         if(user) {
             const creator = user.pk;
             try {
-                const response = await fetch("http://127.0.0.1:8000/queues/", {
+                const response = await fetch("http://18.185.28.225/queues/", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

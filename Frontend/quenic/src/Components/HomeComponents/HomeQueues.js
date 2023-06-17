@@ -24,7 +24,7 @@ function HomeQueues() {
         const user = await getCurrentUser()
         console.log(user)
         try {
-            const response = await fetch(`http://127.0.0.1:8000/users/${user.pk}/queues`);
+            const response = await fetch(`http://18.185.28.225/users/${user.pk}/queues`);
             const data = await response.json();
             setQueues(data);
             setIsLoading(false);
@@ -39,7 +39,7 @@ function HomeQueues() {
 
     async function deleteQueue(id) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/queues/${id}`, {
+            const response = await fetch(`http://18.185.28.225/queues/${id}`, {
                 method: 'DELETE',
             })
             if (response.ok) {

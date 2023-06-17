@@ -31,7 +31,7 @@ function Queue() {
         const checkIfUserIsInQueue = async () => {
             try {
                 const user = await getCurrentUser();
-                const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members/`);
+                const response = await fetch(`http://18.185.28.225/queues/${id}/members/`);
                 const members = await response.json();
 
                 const userIsInQueue = members.some(member => member.user === user.pk);
@@ -105,14 +105,14 @@ function Queue() {
             setQueueData(queueDataFromState);
         } else {
             // Fetch from API as normal
-            fetch(`http://127.0.0.1:8000/queues/${id}`)
+            fetch(`http://18.185.28.225/queues/${id}`)
                 .then(response => response.json())
                 .then(data => setQueueData(data))
                 .catch(err => console.error(err));
         }
     }, [id, queueDataFromState]);
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/queues/${id}/members/`)
+        fetch(`http://18.185.28.225/queues/${id}/members/`)
             .then(response => response.json())
             .then(data => {
                 const sortedData = data.sort((a, b) => a.position - b.position);

@@ -18,7 +18,7 @@ export function isLoggedIn() {
 
 export async function login(username, password) {
     try {
-        const response = await fetch('http://localhost:8000/dj-rest-auth/login/', {
+        const response = await fetch('http://18.185.28.225/dj-rest-auth/login/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
