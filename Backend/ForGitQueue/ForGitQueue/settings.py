@@ -79,6 +79,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://localhost:8000',
+    'https://main.d31blc8i1c1i4d.amplifyapp.com'
 )
 
 ROOT_URLCONF = 'ForGitQueue.urls'
