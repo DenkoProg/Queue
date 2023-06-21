@@ -24,7 +24,7 @@ function HomeQueues() {
         const user = await getCurrentUser()
         console.log(user)
         try {
-            const response = await fetch(`http://18.185.28.225/users/${user.pk}/queues`);
+            const response = await fetch(`https://api.quenic.space/users/${user.pk}/queues`);
             const data = await response.json();
             setQueues(data);
             setIsLoading(false);
