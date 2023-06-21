@@ -54,7 +54,7 @@ function CreateQueue({onExit}) {
         if(user) {
             const creator = user.pk;
             try {
-                const response = await fetch("http://18.185.28.225/queues/", {
+                const response = await fetch("https://api.quenic.space/queues/", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -39,7 +39,7 @@ function HomeQueues() {
 
     async function deleteQueue(id) {
         try {
-            const response = await fetch(`http://18.185.28.225/queues/${id}`, {
+            const response = await fetch(`https://api.quenic.space/queues/${id}`, {
                 method: 'DELETE',
             })
             if (response.ok) {
