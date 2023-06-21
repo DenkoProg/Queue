@@ -80,7 +80,7 @@ function Queue() {
         try {
             const user = await getCurrentUser();
             console.log(user)
-            const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members/${user.pk}`, {
+            const response = await fetch(`https://api.quenic.space/queues/${id}/members/${user.pk}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,14 +105,14 @@ function Queue() {
             setQueueData(queueDataFromState);
         } else {
             // Fetch from API as normal
-            fetch(`http://18.185.28.225/queues/${id}`)
+            fetch(`https://api.quenic.space/queues/${id}`)
                 .then(response => response.json())
                 .then(data => setQueueData(data))
                 .catch(err => console.error(err));
         }
     }, [id, queueDataFromState]);
     useEffect(() => {
-        fetch(`http://18.185.28.225/queues/${id}/members/`)
+        fetch(`https://api.quenic.space/queues/${id}/members/`)
             .then(response => response.json())
             .then(data => {
                 const sortedData = data.sort((a, b) => a.position - b.position);
