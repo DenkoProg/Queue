@@ -40,7 +40,7 @@ function SignUp() {
 
         try {
             const response = await fetch(
-                "http://18.185.28.225/dj-rest-auth/registration/",
+                "https://api.quenic.space/dj-rest-auth/registration/",
                 {
                     method: "POST",
                     headers: {

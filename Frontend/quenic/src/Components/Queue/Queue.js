@@ -31,7 +31,7 @@ function Queue() {
         const checkIfUserIsInQueue = async () => {
             try {
                 const user = await getCurrentUser();
-                const response = await fetch(`http://18.185.28.225/queues/${id}/members/`);
+                const response = await fetch(`https://api.quenic.space/queues/${id}/members/`);
                 const members = await response.json();
 
                 const userIsInQueue = members.some(member => member.user === user.pk);
@@ -49,7 +49,7 @@ function Queue() {
     const addUserToQueue = async () => {
         try {
             const user = await getCurrentUser();
-            const response = await fetch(`http://127.0.0.1:8000/queues/${id}/members/`, {
+            const response = await fetch(`https://api.quenic.space/queues/${id}/members/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

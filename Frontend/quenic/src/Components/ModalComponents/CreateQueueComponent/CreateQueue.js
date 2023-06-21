@@ -11,7 +11,7 @@ import 'primeicons/primeicons.css';
 export async function getCurrentUser() {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch('http://18.185.28.225/dj-rest-auth/user/', {
+        const response = await fetch('https://api.quenic.space/dj-rest-auth/user/', {
             method: 'GET',
             headers: {
                 'Authorization': `Token ${token}`,

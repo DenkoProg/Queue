@@ -1,7 +1,7 @@
 export async function logOut() {
     try {
         // Invalidate the token on the server
-        const response = await fetch('http://18.185.28.225/dj-rest-auth/logout/', {
+        const response = await fetch('https://api.quenic.space/dj-rest-auth/logout/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
