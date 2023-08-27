@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+@60$0@-2lcnq@949s==)5&9%v_*tcpyfxvsu*)ef@85!dbf*z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -109,10 +109,10 @@ WSGI_APPLICATION = 'ForGitQueue.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'queue-testing',
         'USER': 'postgres',
-        'PASSWORD': '12345678',
-        'HOST': 'db-quenic-2.cyfczwc1jhyh.eu-north-1.rds.amazonaws.com',
+        'PASSWORD': 'qwerty0002234',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }

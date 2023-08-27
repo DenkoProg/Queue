@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
-from .models import Queue, QueueMembership, User, SwapRequest
+from .models import Queue, QueueMembership, SwapRequest
 from .permissions import IsCreatorOrReadOnly
 from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer, SwapRequestSerializer
 from rest_framework.permissions import AllowAny
@@ -9,8 +9,9 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
+
 class QueueViewSet(viewsets.ModelViewSet):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsCreatorOrReadOnly,)
     queryset = Queue.objects.all()
     serializer_class = QueueSerializer
 
@@ -21,10 +22,10 @@ class QueueViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def perform_create(self, serializer):
-        queue = serializer.save()
-        creator_id = self.request.data['creator']
-        user = User.objects.get(id=creator_id)
+        user = self.request.user
+        queue = serializer.save(creator=user)
         QueueMembership.objects.create(user=user, queue=queue)
+
 
 class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
@@ -38,6 +39,7 @@ class UserViewSet(viewsets.ModelViewSet):
         queues = [membership.queue for membership in memberships]
         serializer = QueueSerializer(queues, many=True)
         return Response(serializer.data)
+
 
 class QueueMembershipViewSet(mixins.CreateModelMixin,
                              mixins.RetrieveModelMixin,
