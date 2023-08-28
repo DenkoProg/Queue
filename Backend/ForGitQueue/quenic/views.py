@@ -3,7 +3,7 @@ from rest_framework import viewsets, mixins
 from .models import Queue, QueueMembership, SwapRequest
 from .permissions import IsCreatorOrReadOnly
 from .serializers import QueueSerializer, UserSerializer, QueueMembershipSerializer, SwapRequestSerializer
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 
 
 class QueueViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsCreatorOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly, IsCreatorOrReadOnly,)
     queryset = Queue.objects.all()
     serializer_class = QueueSerializer
 
